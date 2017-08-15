@@ -1,6 +1,7 @@
 class Admin::BidsController < ApplicationController
   def index
-    @restaurants = policy_scope(Bid).order(created_at: :desc)
+    @security = Security.find(params[:security_id])
+    @bids = policy_scope(@security.bids).order(created_at: :desc)
   end
 
   def mybids
