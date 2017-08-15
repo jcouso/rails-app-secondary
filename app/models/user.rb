@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :email_confirmation, presence: true
   validates :cpf, uniqueness: true, format: { with: /[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[-][0-9]{2}/i }
   validates :identity, uniqueness: true
-  validates :birthdate, presence: true
+  validates :birthdate, presence: true, date: true
   validates :mother_name, length: { minimum: 2 }
   validates :father_name, length: { minimum: 2 }
   validates :address, presence: true
@@ -19,6 +19,6 @@ class User < ApplicationRecord
   validates :bank, presence: true
   validates :account_agency, uniqueness: true
   validates :account_number, uniqueness: true
-  validates :expedition_date, presence: true
+  validates :expedition_date, presence: true, date: true
 
 end
