@@ -1,0 +1,18 @@
+<%= simple_form_for([:admin, @security]) do |f| %>
+
+  <div class="form-input">
+    <%= f.input :mode %>
+    <%= f.input :code %>
+    <%= f.input :maturity %>
+    <%= f.input :price %>
+    <%= f.input :date_limit %>
+    <%= f.input :quantity %>
+    <%= f.input :rate %>
+    <%= f.input :indexer %>
+    <%= f.input :unit_price %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary"%>
+  </div>
+
+  <% end %>
