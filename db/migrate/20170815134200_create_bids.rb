@@ -4,7 +4,7 @@ class CreateBids < ActiveRecord::Migration[5.0]
       t.references :buyer, index: true
       t.references :seller, index: true
       t.references :security, foreign_key: true
-      t.string :status
+      t.boolean :status, default: false
       t.decimal :price
       t.decimal :rate
       t.foreign_key :users, column: :buyer_id

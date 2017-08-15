@@ -7,7 +7,6 @@ class CreateSecurities < ActiveRecord::Migration[5.0]
       t.string :mode
       t.string :name
       t.string :code
-      t.decimal :value
       t.date :maturity
       t.decimal :price
       t.date :date_limit

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :securities do
       resources :bids
     end
+    get 'mybids', to: 'bids#mybids'
   end
 
   resources :securities, only: [:index, :show] do
