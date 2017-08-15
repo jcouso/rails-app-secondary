@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815135043) do
+ActiveRecord::Schema.define(version: 20170815164344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20170815135043) do
     t.integer  "buyer_id"
     t.integer  "seller_id"
     t.integer  "security_id"
-    t.string   "status"
+    t.boolean  "status",      default: false
     t.decimal  "price"
     t.decimal  "rate"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["buyer_id"], name: "index_bids_on_buyer_id", using: :btree
     t.index ["security_id"], name: "index_bids_on_security_id", using: :btree
     t.index ["seller_id"], name: "index_bids_on_seller_id", using: :btree
@@ -43,13 +43,16 @@ ActiveRecord::Schema.define(version: 20170815135043) do
     t.string   "mode"
     t.string   "name"
     t.string   "code"
-    t.decimal  "value"
     t.date     "maturity"
     t.decimal  "price"
     t.date     "date_limit"
     t.string   "status"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "quantity"
+    t.decimal  "rate"
+    t.decimal  "unit_price"
+    t.string   "indexer"
     t.index ["issuer_id"], name: "index_securities_on_issuer_id", using: :btree
     t.index ["security_type_id"], name: "index_securities_on_security_type_id", using: :btree
     t.index ["user_id"], name: "index_securities_on_user_id", using: :btree
