@@ -1,18 +1,39 @@
-<%= simple_form_for([:admin, @security]) do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-security">
+        <h1>Cadastre um novo título</h1>
 
-  <div class="form-input">
-    <%= f.input :mode %>
-    <%= f.input :code %>
-    <%= f.input :maturity %>
-    <%= f.input :price %>
-    <%= f.input :date_limit %>
-    <%= f.input :quantity %>
-    <%= f.input :rate %>
-    <%= f.input :indexer %>
-    <%= f.input :unit_price %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary"%>
-  </div>
+        <%= simple_form_for([:admin, @security]) do |f| %>
 
-  <% end %>
+          <div class="form-input form-group-sm">
+            <%= f.input :mode, collection: ["Leilão", "Preço fixo", "Negociações abertas"], prompt: "Como você quer vender seu título?" %>
+            <%= f.input :code %>
+            <%= f.input :maturity %>
+            <%= f.input :price %>
+            <%= f.input :date_limit %>
+              <div class="row">
+                <div class="col-sm-6">
+                  <%= f.input :quantity %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.input :unit_price %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <%= f.input :rate %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"] %>
+                </div>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, class: "btn btn-primary"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
