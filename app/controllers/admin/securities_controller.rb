@@ -6,6 +6,7 @@ before_action :set_security, only: [:edit, :update, :destroy]
 
   def new
     @security = Security.new
+    authorize @security
   end
 
   def create
@@ -15,6 +16,7 @@ before_action :set_security, only: [:edit, :update, :destroy]
       redirect_to admin_securities_path(@security)
     else
       render :new
+    end
   end
 
   def edit

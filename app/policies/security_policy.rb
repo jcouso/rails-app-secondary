@@ -6,7 +6,7 @@ class SecurityPolicy < ApplicationPolicy
   end
 
   def create?
-    user_is_owner?
+    true
   end
 
   def show?
@@ -28,6 +28,6 @@ class SecurityPolicy < ApplicationPolicy
   private
 
   def user_is_owner?
-    record_user == user
+    record.user == user
   end
 end
