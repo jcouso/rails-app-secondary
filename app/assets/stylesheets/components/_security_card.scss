@@ -33,17 +33,29 @@
   }
 
   .card-link {
-    padding: 50px;
     font-size: 12px;
-    margin: 10px;
   }
 
   .description {
   font-size: 10px;
   margin-bottom: -10px;
 
+    .security-card-header {
+      height:10em;
+      //margin: 1em 0;
+      display: flex;
+      flex-direction:column;
+      justify-content:space-between;
+      align-items:center
+    }
+    p {
+      margin: 0 0 1px 0 !important;
+      color: #7f7f7f;
+    }
+
     strong {
       font-size: 20px;
+      font-weight: 500;
     }
 
   tr td:first-child {
@@ -54,6 +66,7 @@
   tr td:last-child {
     text-align: right;
     font-weight: 700;
+    font-size:12px;
     }
   }
   #logo {
