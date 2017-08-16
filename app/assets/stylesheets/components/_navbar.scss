@@ -12,6 +12,7 @@
   z-index: 100;
   position: fixed;
   width: 100%;
+  vertical-align: middle;
 }
 
 /* Logo */
@@ -31,12 +32,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  vertical-align: middle;
 }
 
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 5px;
+  vertical-align: middle;
 }
 
 /* Navbar link */
@@ -80,7 +83,7 @@
   border-top: 1px solid #E6E6E6;
 }
 
-h1 {
+.text-logo {
   color: $navy-blue;
   font-size: 30px;
   font-weight: bold;
@@ -90,6 +93,8 @@ h1 {
 .user-name {
   color: $navy-blue;
   font-size: 14px;
+  margin: 0;
+  margin-right: 30px;
 }
 
 .user-account-ballance {
@@ -109,5 +114,5 @@ a:hover, a:visited, a:link, a:active {
 .navbar-middle {
   display: flex;
   align-items: right;
-    vertical-align: middle;
+  vertical-align: middle;
 }
