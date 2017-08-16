@@ -19,6 +19,7 @@ gem 'uglifier'
 gem 'date_validator'
 gem "pundit"
 gem 'faker'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'pry-byebug'
