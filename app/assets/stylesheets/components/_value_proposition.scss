@@ -1,28 +1,21 @@
 .value-proposition {
-  background-color: $light-gray;
   background-size:cover;
   padding: 20px;
     h2 {
-      color: black;
+      color: white;
       font-weight: bold;
       padding: 10px 0;
     }
 
     i {
       font-size: 100px;
-      color: $medium-blue;
+      color: white;
     }
 
     p {
       margin: 20px;
-      color: black;
-      font-size: 20px;
+      color: white;
     }
-}
-.value-wrapper {
-  background-color: light-gray;
-  background-size: cover;
-  box-shadow: 0px 0px 3px black;
 }
 @media screen and (max-width: 990px) {
     .value-proposition {
