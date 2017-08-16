@@ -18,7 +18,7 @@ class Security < ApplicationRecord
   #validates :indexer, presence: true
   #validates :unit_price, presence: true, numericality: true
 
-  def self.value
+  def value
     self.quantity * self.unit_price
   end
 
