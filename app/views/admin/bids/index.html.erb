@@ -1,109 +1,38 @@
 <style>
-
-.security-card {
-  background-color: white;
-  padding:0px;
-  box-shadow: 5px 5px 10px #cccccc;
-  transition: border .5s;
-  border:1px solid white;
-  border-top: 7px solid #CD072F;
-  border-radius: 3px;
-  min-width: 220px;
-
-}
-  .security-card:hover {
-  border: 1px solid #CD072F;
-  border-top: 7px solid #CD072F;
-
+.best-offer {
+background-color:white;
+padding: 10px;
+border-radius: 5px;
+box-shadow: 5px 5px 10px #cccccc;
+transition: border .5s;
+border: 1px solid #b3b3b3;
+border-radius: 3px;
 }
 
-.security-type-logo {
-  position: absolute;
-  right: 20px;
-  top: 0px;
-  background-color: white;
-  font-size: 15px;
-  color: #b3b3b3;
-  border: 1px solid #e6e6e6;
-  width: 40px;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.description {
-  font-size: 10px;
-}
-
-.description strong {
-  font-size: 20px;
-}
-
-tr td:first-child {
-  text-align: left;
-}
-
-tr td:last-child {
-  text-align: right;
+.bid-title {
+  font-size: 30px;
   font-weight: 700;
-}
-
-#logo {
-  margin:5px;
 }
 
 </style>
 
-
 <div class="container"> <!--Remove before mergin -->
-  <h1> Melhores Ofertas em <%= @security.name %></h1>
+  <br>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
+    <h1 class="bid-title"> Ofertas:</h1>
       <% @bids.each do |bid| %>
-      <% 10.times do %>
-      <ul>
-        <li>Name: <%= bid.security.name %></li>
-        <li>Inicial Price<%= bid.security.price %></li>
-        <li>Best Offer: <%= bid.price  %> from <%= bid.buyer.email %></li>
-      </ul>
-      <% end %>
+      <div class="best-offer">
+        <ul>
+          <li>Name: <%= bid.security.name %></li>
+          <li>Inicial Price<%= bid.security.price %></li>
+          <li>Best Offer: <%= bid.price  %> from <%= bid.buyer.email %></li>
+        </ul>
+      </div>
       <% end %>
     </div>
     <div class="col-md-3">
-      <div class="security-card text-center">
-        <%= image_tag "bradesco-logo.png", width: "30" , id: "logo" %>
-        <div class="security-type-logo">
-          <%= @security.security_type.name %>
-        </div>
-        <div class="description">
-          <p><strong><%= @security.name %></strong></p>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <td>Data de Vencimento:</td>
-                <td><%= @security.maturity %></td>
-              </tr>
-              <tr>
-                <td>Rate:</td>
-                <td><%= @security.rate*100.00 %>%</td>
-              </tr>
-              <tr>
-                <td>Quantidade:</td>
-                <td><%= @security.quantity %></td>
-              </tr>
-              <tr>
-                <td>PU</td>
-                <td><%= @security.unit_price %></td>
-              </tr>
-              <tr>
-                <td>Valor Inicial</td>
-                <td><%= @security.value %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <%=render 'shared/security_card', security: @security %>
     </div>
   </div>
 </div>
