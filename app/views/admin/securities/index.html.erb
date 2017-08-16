@@ -1,18 +1,19 @@
-<div class="row">
-  <div class="col-md-12">
+
     <h1>Meus títulos cadastrados</h1>
     <br>
     <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success" %>
-  </div>
-</div>
+
 <br>
 <br>
-<div class="row">
+
   <% if @securities.all.empty? %>
     <p>Você não tem títulos cadastrados ainda<p>
   <% else %>
-    <% @securities.each do |security| %>
-      <%=render 'shared/security_card', security: @security %>
-    <% end %>
+    <div class="row">
+      <% @securities.each do |security| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <%=render 'shared/security_card', security: security %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-</div>

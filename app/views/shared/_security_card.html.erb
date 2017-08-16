@@ -1,5 +1,5 @@
-<div class="security-card text-center" id= '<%=security.issuer.name.downcase%>'>
-  <%= image_tag security.issuer.name.downcase+"-logo.png", width: "50" , id: "logo" %>
+<div class="security-card text-center" id= '<%=security.issuer.name.downcase.gsub(" ", "-")%>'>
+  <%= image_tag security.issuer.name.downcase+"-logo.png", width: "60" , id: "logo" %>
   <div class="security-type-logo">
     <%= security.security_type.name %>
   </div>
