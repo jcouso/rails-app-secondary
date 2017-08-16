@@ -1,19 +1,46 @@
+<style>
+.user-card {
+  background-color: white;
+  height: 10em;
+  margin-top:10px;
+  box-shadow: 5px 5px 10px #cccccc;
+  border-radius: 3px;
 
-    <h1>Meus títulos cadastrados</h1>
-    <br>
-    <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success" %>
+
+}
+
+ .user-card p {
+    font-size: 100px;
+
+
+  }
+</style>
+
+
 
 <br>
-<br>
+
+<div class="row">
+
+    <div class="col-lg-3">
+      <div class="user-card text-center">
+        <p><i class="fa fa-user-circle" aria-hidden="true"></i></p>
+        <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success" %>
+      </div>
+    </div>
+
 
   <% if @securities.all.empty? %>
     <p>Você não tem títulos cadastrados ainda<p>
   <% else %>
+  <div class="col-lg-9">
     <div class="row">
       <% @securities.each do |security| %>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
           <%=render 'shared/security_card', security: security %>
         </div>
       <% end %>
     </div>
   <% end %>
+  </div>
+</div>
