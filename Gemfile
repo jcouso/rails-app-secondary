@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'date_validator'
 gem "pundit"
+gem 'faker'
 
 group :development, :test do
   gem 'pry-byebug'
