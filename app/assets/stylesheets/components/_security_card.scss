@@ -7,6 +7,8 @@
   border-top: 7px solid;
   border-radius: 3px;
   min-width: 220px;
+  min-height: 350px;
+  margin: 10px 0;
 
   &:hover {
     border: 1px solid;
@@ -14,10 +16,10 @@
   }
   .security-type-logo {
     position: absolute;
-    right: 20px;
-    top: 0px;
+    right: 2em;
+    top: 0em;
     background-color: white;
-    font-size: 15px;
+    font-size: 12px;
     color: #b3b3b3;
     border: 1px solid #e6e6e6;
     width: 40px;
@@ -25,6 +27,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin: 10px 0;
+
+
   }
 
   .card-link {
@@ -63,3 +68,40 @@
     border-top: 7px solid #CD072F;
   }
 }
+
+#vale {
+  border-top-color: #009399;
+  &:hover {
+    border: 1px solid #009399;
+    border-top: 7px solid #009399;
+  }
+}
+
+
+
+#banco-do-brasil {
+  border-top-color: #FFF200;
+  &:hover {
+    border: 1px solid #FFF200;
+    border-top: 7px solid #FFF200;
+  }
+}
+
+#banco-bmg {
+  border-top-color: #EC860E;
+  &:hover {
+    border: 1px solid #EC860E;
+    border-top: 7px solid #EC860E;
+  }
+}
+
+
+
+#banco-original {
+  border-top-color: #56B766;
+  &:hover {
+    border: 1px solid #56B766;
+    border-top: 7px solid #56B766;
+  }
+}
+

@@ -1,10 +1,10 @@
-<div class="security-card text-center" id= '<%=security.issuer.name.downcase%>'>
-  <%= image_tag security.issuer.name.downcase+"-logo.png", width: "30" , id: "logo" %>
+<div class="security-card text-center" id= '<%=security.issuer.name.downcase.gsub(" ", "-")%>'>
+  <%= image_tag security.issuer.name.downcase+"-logo.png", width: "60" , id: "logo" %>
   <div class="security-type-logo">
     <%= security.security_type.name %>
   </div>
   <div class="description">
-    <p><strong><%= security.name %></strong></p>
+    <p><strong>Titulo <%= security.issuer.name %></strong></p>
     <table class="table table-striped">
       <tbody>
         <tr>
@@ -13,7 +13,7 @@
         </tr>
         <tr>
           <td>Rate:</td>
-          <td><%= security.rate*100.00 %>%</td>
+          <td><%= (security.rate*100.00).round(2) %>%</td>
         </tr>
         <tr>
           <td>Quantidade:</td>
@@ -21,11 +21,11 @@
         </tr>
         <tr>
           <td>PU</td>
-          <td><%= security.unit_price %></td>
+          <td><%= security.unit_price.round(2) %></td>
         </tr>
         <tr>
           <td>Valor Inicial</td>
-          <td><%= security.value %></td>
+          <td><%= security.value.round(2) %></td>
         </tr>
       </tbody>
     </table>

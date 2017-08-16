@@ -13,9 +13,11 @@
     <%= render 'shared/flashes' %>
     <%= render 'shared/banner' %>
     <div style="background-image: linear-gradient(-20deg, rgba(0,63,191,1) 0%, rgba(48,52,129,1) 75%), url(<%= image_path 'blank.jpeg' %>)">
+      <%= render 'shared/what_is' %>
       <%= render 'shared/value_proposition' %>
       <%= render 'shared/numbers' %>
-      <%= render 'shared/what_is' %>
+      <%= render 'shared/what_clients_say' %>
+      <%= render 'shared/partner_banks' %>
       <div class="container">
         <%= yield %>
       </div>
