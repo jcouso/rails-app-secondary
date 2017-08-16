@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'date_validator'
 gem "pundit"
+gem 'faker'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -26,4 +27,5 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'faker'
 end

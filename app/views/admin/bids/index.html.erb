@@ -25,8 +25,8 @@ border-radius: 3px;
       <div class="best-offer">
         <ul>
           <li>Name: <%= bid.security.name %></li>
-          <li>Inicial Price<%= bid.security.price %></li>
-          <li>Best Offer: <%= bid.price  %> from <%= bid.buyer.email %></li>
+          <li>Inicial Price<%= bid.security.price.round(2) %></li>
+          <li>Best Offer: <%= bid.price.round(2)  %> from <%= bid.buyer.email %></li>
         </ul>
       </div>
       <% end %>
