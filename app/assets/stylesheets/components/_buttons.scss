@@ -14,3 +14,35 @@
     background-color: transparent;
   }
 }
+
+.btn-navbar {
+  color: $navy-blue;
+  background-color: transparent;
+  border: 1.5px solid $navy-blue;
+  padding: 0.5em 1em;
+  margin-right: 0.95em;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 1s ease;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $navy-blue;
+  }
+}
+
+.btn-navbar-create-account {
+  color: $green;
+  background-color: transparent;
+  border: 1.5px solid $green;
+  padding: 0.5em 1em;
+  margin-right: 0.95em;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 1s ease;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $green;
+  }
+}
