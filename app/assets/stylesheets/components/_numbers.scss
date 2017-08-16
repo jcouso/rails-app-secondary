@@ -1,0 +1,21 @@
+.numbers {
+  padding: 20px;
+  background-color: white;
+  background-size: cover;
+    h2 {
+      color: black;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+
+    h3 {
+      color: $medium-blue;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 20px;
+      color: black;
+    }
+}
