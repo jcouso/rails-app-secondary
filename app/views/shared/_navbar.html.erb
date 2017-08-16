@@ -1,33 +1,71 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+  <%= link_to root_path do %>
+    <h1>secondary.</h1>
   <% end %>
-  <h1>secondary.</h1>
 
+  <div class="navbar-middle">
+
+  <% if user_signed_in? %>
+    <!-- Links when logged in -->
+    <div class="text-right">
+      <p class="user-name">
+        Bem-vindo <%= current_user.email %>. Seu saldo é <span class="user-account-ballance">R$ 69.696.969,69</span>
+        <br>
+        <span class="legal-info">Posição até o momento. <%= Time.now.strftime("%d/%m/%Y %H:%M:%S") %></span>
+      </p>
+    </div>
+  <% end %>
+
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
     <% if user_signed_in? %>
-
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
-      <!-- Avatar with dropdown menu -->
+      <!-- Messages notifications with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <i class="btn btn-sm btn-navbar dropdown-toggle fa fa-envelope-o" data-toggle="dropdown"></i>
+
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <i class="fa fa-envelope"></i> <%= t(".profile", default: "Você recebeu uma oferta para o título XYZ") %>
               <% end %>
             </li>
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <i class="fa fa-envelope"></i> <%= t(".profile", default: "Sua proposta de compra foi aceita") %>
+              <% end %>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <!-- Itens in dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <i class="fa fa-user btn btn-sm btn-navbar dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Meus dados") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-university"></i> <%= t(".profile", default: "Minha conta") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_securities_path do %>
+                <i class="fa fa-file-text-o"></i>  <%= t(".securities", default: "Meus títulos") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-handshake-o"></i>  <%= t(".profile", default: "Minhas ofertas") %>
               <% end %>
             </li>
             <li>
@@ -38,10 +76,11 @@
           </ul>
         </div>
       </div>
+
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Entrar"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_up", default: "Crie a sua conta"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Entrar"), new_user_session_path, class: "btn btn-sm btn-navbar" %>
+      <%= link_to t(".sign_up", default: "Crie a sua conta"), new_user_registration_path, class: "btn btn-sm btn-navbar-create-account" %>
     <% end %>
   </div>
 
@@ -55,6 +94,7 @@
         <li><a href="#">Other one</a></li>
       </ul>
     </div>
+  </div>
   </div>
 </div>
 

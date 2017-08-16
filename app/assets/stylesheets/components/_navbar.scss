@@ -36,7 +36,7 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 0 0 10px;
 }
 
 /* Navbar link */
@@ -78,4 +78,36 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+h1 {
+  color: $navy-blue;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.user-name {
+  color: $navy-blue;
+  font-size: 14px;
+}
+
+.user-account-ballance {
+  color: $green;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.legal-info {
+  font-size: 10px;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+.navbar-middle {
+  display: flex;
+  align-items: right;
+    vertical-align: middle;
 }
