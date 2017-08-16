@@ -8,6 +8,8 @@
 
           <div class="form-input form-group-sm">
             <%= f.input :mode, collection: ["Leilão", "Preço fixo", "Negociações abertas"], prompt: "Como você quer vender seu título?" %>
+            <%= f.association :security_type %>
+            <%= f.association :issuer %>
             <%= f.input :code %>
             <%= f.input :maturity %>
             <%= f.input :price %>
