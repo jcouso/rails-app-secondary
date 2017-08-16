@@ -22,7 +22,7 @@ ISSUERS.each do |issuer|
 end
 
 10.times do
-  User.create(email: Faker::Internet.email,
+  u = User.create(email: Faker::Internet.email,
               password: "123123",
               name: Faker::Name.name,
               cpf: Faker::Number.number(11),
@@ -31,12 +31,11 @@ end
               mother_name:Faker::Name.name,
               father_name:Faker::Name.name
               )
-end
 
-10.times do
+  10.times do
   quantity = rand(1..30)
   unit_price = rand(1000.00..1500.00)
-  Security.create(user: User.all.sample,
+  Security.create(user: u,
                       issuer: Issuer.all.sample,
                       security_type: SecurityType.all.sample,
                       mode: "Leilão",
@@ -48,7 +47,10 @@ end
                       unit_price: unit_price,
                       price: quantity*unit_price*rand(1.05...1.10),
                       indexer: INDEXERS.sample)
+  end
 end
+
+
 
 
 Security.all.each do |security|
