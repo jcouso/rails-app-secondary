@@ -7,12 +7,15 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= render 'shared/navbar' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+
     <%= render 'shared/flashes' %>
-    <div class="container">
-      <%= yield %>
+    <div class="main">
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
     <%#= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
