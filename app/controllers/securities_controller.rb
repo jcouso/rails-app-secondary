@@ -4,4 +4,5 @@ class SecuritiesController < ApplicationController
   def index
     @securities = policy_scope(Security)
   end
+
 end
