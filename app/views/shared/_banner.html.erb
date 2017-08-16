@@ -2,7 +2,11 @@
   <div class="col-xs-offset-1 col-xs-12 col-sm-offset-1 col-sm-8" >
     <h1>secondary.</h1>
     <p>A sua plataforma para negociar títulos de renda fixa.</p>
-    <%= link_to "Venda seu título", new_admin_security_path, class: "btn btn-lg btn-home" %>
-    <%= link_to "Veja os títulos disponíveis", search_securities_path, class: "btn btn-lg btn-home" %>
+    <% if policy(Security).search? %>
+      <%= form_tag(search_securities_path, method: :get, prompt: "") do %>
+        <%= link_to "Venda seu título", new_admin_security_path, class: "btn btn-lg btn-home" %>
+        <%= submit_tag "Veja os títulos disponíveis", class: "btn btn-lg btn-home" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
