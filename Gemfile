@@ -20,6 +20,7 @@ gem 'date_validator'
 gem "pundit"
 gem 'faker'
 gem 'cloudinary'
+gem 'rails-i18n', '5.0.3'
 
 group :development, :test do
   gem 'pry-byebug'
