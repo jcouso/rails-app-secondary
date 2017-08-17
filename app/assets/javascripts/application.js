@@ -6,6 +6,8 @@
 
 $(document).ready(function() {
   $('.datepicker').datepicker({
-      language: "pt"
+      format: "yyyy/mm/dd",
+      language: "pt",
+      todayHighlight: true
   });
 });
