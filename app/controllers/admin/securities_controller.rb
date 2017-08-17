@@ -1,5 +1,5 @@
 class Admin::SecuritiesController < ApplicationController
-before_action :set_security, only: [:edit, :update, :destroy]
+before_action :set_security, only: [:edit, :update, :destroy, :show]
   def index
     @securities = policy_scope(Security).where(user: current_user)
   end
@@ -17,6 +17,9 @@ before_action :set_security, only: [:edit, :update, :destroy]
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
