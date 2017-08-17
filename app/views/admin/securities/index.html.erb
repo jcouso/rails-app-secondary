@@ -1,54 +1,10 @@
-<style>
-  .securities-wrapper {
-  }
-.user-card {
-  background-color: white;
-  margin-top:10px;
-  box-shadow: 5px 5px 10px #cccccc;
-  border-radius: 3px;
-  padding: 10px;
-
-}
-
- .user-card p i{
-    font-size: 100px;
-
-  }
-
-  .test {
-  position: -webkit-sticky;  // required for Safari
-  position: sticky;
-  top: 0; // required as well.
-}
-  .height {
-    height: 100vh;
-  }
-
-  p {
-  font-size: 15px;
-  }
-
-</style>
-
 <br>
-<div class="securities-wrapper">
-
 <div class="row">
     <div class="col-lg-3 ">
-      <div class="user-card text-center sticky-top height">
-        <div class="test">
-
-        <p><i class="fa fa-user-circle" aria-hidden="true"></i></p>
-        <p><strong>Nome:</strong> <%= current_user.name%></p>
-        <p><strong>Usuario Desde:</strong> <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
-        <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success btn-sm" %>
-        </div>
-      </div>
+      <%= render "shared/user_card", user: current_user %>
     </div>
-
-
   <% if @securities.all.empty? %>
-    <p>Você não tem títulos cadastrados ainda<p>
+    <h3>Você não tem títulos cadastrados ainda<h3>
   <% else %>
   <div class="col-lg-9">
     <div class="row">
@@ -61,4 +17,4 @@
   <% end %>
   </div>
 </div>
-</div>
+
