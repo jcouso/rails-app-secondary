@@ -4,46 +4,48 @@
       <div class="form-login">
         <p align="center"><span class="text-logo">secondary.</span></p>
 
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <h2>Editar <%= resource_name.to_s.humanize %></h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
 
-            <%= f.input :name, required: true, autofocus: true %>
+            <%= f.input :name, label: 'Nome', required: true, autofocus: true %>
             <%= f.input :email, required: true %>
-            <%= f.input :cpf, required: true %>
-            <%= f.input :document_number, required: true %>
-            <%= f.input :birthdate, required: true %>
-            <%= f.input :mother_name, required: true %>
-            <%= f.input :father_name, required: true %>
-            <%= f.input :address, required: true %>
-            <%= f.input :phone, required: true %>
-            <%= f.input :bank, required: true %>
-            <%= f.input :account_agency, required: true %>
-            <%= f.input :account_number, required: true %>
-            <%= f.input :expedition_date, required: true %>
+            <%= f.input :cpf, label: 'CPF', required: true %>
+            <%= f.input :birthdate, as: :string, input_html: {class: "datepicker"}, label: 'Data de nascimento', required: true %>
+            <%= f.input :document_number, label: 'Número de Documento', required: true %>
+            <%= f.input :expedition_date, as: :string, input_html: {class: "datepicker"}, label: 'Data de expedição', required: true %>
+            <%= f.input :mother_name, label: 'Nome da mãe', required: true %>
+            <%= f.input :father_name, label: 'Nome do pai', required: true %>
+            <%= f.input :address, label: 'Endereço', required: true %>
+            <%= f.input :phone, label: 'Telefone', required: true %>
+            <%= f.input :bank, label: 'Banco', required: true %>
+            <%= f.input :account_agency, label: 'Agência', required: true %>
+            <%= f.input :account_number, label: 'Número de conta', required: true %>
+
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+            <%= f.input :password, autocomplete: "off", placeholder: "Deixe em branco se não quiser trocar", required: false %>
             <%= f.input :password_confirmation, required: false %>
-            <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+            <%= f.input :current_password, placeholder: "Insira sua senha atual para confirmar suas alterações", required: true %>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Update", class: "btn btn-primary" %>
+            <%= f.button :submit, "Atualizar meus dados", class: "btn btn-primary" %>
           </div>
         <% end %>
 
-        <h3>Cancel my account</h3>
 
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        <p>Não gostou?
+        <br>
+        <%= link_to "Suprimir minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %></p>
 
-        <%= link_to "Back", :back %>
+        <%= link_to "Voltar", :back %>
       </div>
     </div>
   </div>
