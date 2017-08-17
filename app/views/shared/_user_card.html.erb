@@ -1,0 +1,6 @@
+<div class="user-card text-center ">
+  <p><i class="fa fa-user-circle" aria-hidden="true"></i></p>
+  <p><strong>Nome:</strong> <%= user.name%></p>
+  <p><strong>Usuario Desde:</strong> <%= user.created_at.strftime("%d/%m/%Y")%></p>
+  <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success btn-sm" %>
+</div>
