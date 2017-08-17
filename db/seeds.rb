@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-SECURITY_TYPES = ["CDB", "LCI", "LCA", "LC", "RDB", "DEBENTURE", "DPGE", "LF", "LFSUB"]
+SECURITY_TYPES = ["CDB", "CRA", "CRI", "Debêture", "DPGE", "FIDC", "LC", "LCA", "LCI", "LF", "LFSUB"]
 
 INDEXERS = ["CDI", "PRE", "IPC-A", "IGP-M"]
 
