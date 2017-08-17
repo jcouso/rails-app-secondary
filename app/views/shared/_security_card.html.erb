@@ -14,7 +14,11 @@
           <td><%= security.maturity %></td>
         </tr>
         <tr>
-          <td>Rate:</td>
+          <td>Em negociação até:</td>
+          <td><%= security.date_limit %></td>
+        </tr>
+        <tr>
+          <td>Taxa:</td>
           <td><%= (security.rate*100.00).round(2) %>%</td>
         </tr>
         <tr>
