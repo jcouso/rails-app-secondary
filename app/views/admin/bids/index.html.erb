@@ -2,6 +2,7 @@
 .best-offer {
 background-color:white;
 padding: 10px;
+margin: 15px 0;
 border-radius: 5px;
 box-shadow: 5px 5px 10px #cccccc;
 transition: border .5s;
@@ -12,11 +13,14 @@ border-radius: 3px;
 .bid-title {
   font-size: 30px;
   font-weight: 700;
+  color: #7f7f7f;
 }
+
+
+
 
 </style>
 
-<div class="container"> <!--Remove before mergin -->
   <br>
   <div class="row">
     <div class="col-md-9">
@@ -24,9 +28,7 @@ border-radius: 3px;
       <% @bids.each do |bid| %>
       <div class="best-offer">
         <ul>
-          <li>Name: <%= bid.security.name %></li>
-          <li>Inicial Price<%= bid.security.price.round(2) %></li>
-          <li>Best Offer: <%= bid.price.round(2)  %> from <%= bid.buyer.email %></li>
+          <li>Lançe: <%= number_to_currency(bid.price) %> de <%= bid.buyer.email %></li>
         </ul>
       </div>
       <% end %>
@@ -35,4 +37,3 @@ border-radius: 3px;
       <%=render 'shared/security_card', security: @security, link_path: security_path(@security) %>
     </div>
   </div>
-</div>
