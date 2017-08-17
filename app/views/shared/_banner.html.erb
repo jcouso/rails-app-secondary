@@ -3,10 +3,10 @@
     <h1>secondary.</h1>
     <p>A sua plataforma para negociar títulos de renda fixa.</p>
     <% if policy(Security).search? %>
-      <%= form_tag(search_securities_path, method: :get, prompt: "") do %>
+      <%#= form_tag(search_securities_path, method: :get, prompt: "") do %>
         <%= link_to "Venda seu título", new_admin_security_path, class: "btn btn-lg btn-home" %>
         <%= submit_tag "Veja os títulos disponíveis", class: "btn btn-lg btn-home" %>
-      <% end %>
+      <%# end %>
     <% end %>
   </div>
 </div>
