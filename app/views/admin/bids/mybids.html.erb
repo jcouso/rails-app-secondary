@@ -1,1 +1,9 @@
-<h1>My Bids</h1>
+<div class="container">
+  <h2>Minhas ofertas enviadas</h2>
+  <% @securities.each do |security| %>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <%=render 'shared/security_card', security: security %>
+    </div>
+  <% end %>
+  </div>
+</div>
