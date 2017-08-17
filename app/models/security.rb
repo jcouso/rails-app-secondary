@@ -14,7 +14,7 @@ class Security < ApplicationRecord
   #validates :unit_price, presence: true, numericality: true
 
   def value
-    self.quantity * self.unit_price
+    quantity * unit_price
   end
 
 end
