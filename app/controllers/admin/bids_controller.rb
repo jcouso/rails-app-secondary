@@ -5,5 +5,6 @@ class Admin::BidsController < ApplicationController
   end
 
   def mybids
+    @securities = Bid.where(buyer: current_user).map(&:security).uniq
   end
 end
