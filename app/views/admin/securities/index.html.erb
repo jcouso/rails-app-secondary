@@ -1,31 +1,48 @@
 <style>
+  .securities-wrapper {
+  }
 .user-card {
   background-color: white;
-  height: 10em;
   margin-top:10px;
   box-shadow: 5px 5px 10px #cccccc;
   border-radius: 3px;
-
+  padding: 10px;
 
 }
 
- .user-card p {
+ .user-card p i{
     font-size: 100px;
 
-
   }
+
+  .test {
+  position: -webkit-sticky;  // required for Safari
+  position: sticky;
+  top: 0; // required as well.
+}
+  .height {
+    height: 100vh;
+  }
+
+  p {
+  font-size: 15px;
+  }
+
 </style>
 
-
-
 <br>
+<div class="securities-wrapper">
 
 <div class="row">
+    <div class="col-lg-3 ">
+      <div class="user-card text-center sticky-top height">
+        <div class="test">
 
-    <div class="col-lg-3">
-      <div class="user-card text-center">
         <p><i class="fa fa-user-circle" aria-hidden="true"></i></p>
-        <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success" %>
+        <p><strong>Nome:</strong> <%= current_user.name%></p>
+        <p><strong>Usuario Desde:</strong> <%= current_user.created_at.strftime("%d/%m/%Y")%></p>
+        <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success btn-sm" %>
+        </div>
       </div>
     </div>
 
@@ -43,4 +60,5 @@
     </div>
   <% end %>
   </div>
+</div>
 </div>
