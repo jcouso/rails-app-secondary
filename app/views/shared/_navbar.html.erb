@@ -13,7 +13,7 @@
     <!-- Links when logged in -->
     <div class="text-right">
       <p class="user-name">
-        Bem-vindo <%= current_user.email %>. Seu saldo é <span class="user-account-ballance">R$ 69.696.969,69</span>
+        Bem-vindo <%= current_user.name %>. Seu saldo é <span class="user-account-ballance">R$ 69.696.969,69</span>
         <br>
         <span class="legal-info">Posição até o momento. <%= Time.now.strftime("%d/%m/%Y %H:%M:%S") %></span>
       </p>
@@ -69,8 +69,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-handshake-o"></i>  <%= t(".profile", default: "Minhas ofertas") %>
+              <%= link_to admin_mybids_path do %>
+                <i class="fa fa-handshake-o"></i>  <%= t(".mybids", default: "Minhas ofertas enviadas") %>
               <% end %>
             </li>
             <li>
