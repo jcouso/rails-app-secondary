@@ -9,6 +9,22 @@ class SecuritiesController < ApplicationController
   def show
   end
 
+  def search
+    @securities = policy_scope(Security)
+    authorize @securities
+    if params[:price].present? || params[:maturity].present?
+      if params[:price].blank?
+        @securities = Security.where(maturity: params[:maturity])
+      elsif params[:maturity].blank?
+        @securities = Security.where(price: params[:price])
+      else
+        @securities = Security.where(maturity: params[:maturity], price: params[:price])
+      end
+    else
+      @securities = policy_scope(Security).order("created_at DESC").limit(3)
+    end
+  end
+
   private
 
   def set_security

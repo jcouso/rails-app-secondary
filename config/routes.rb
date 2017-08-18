@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :securities, only: [:index, :show] do
     collection do
-      get 'search', to: 'securities#seach'
+      get 'search', to: 'securities#search'
     end
   end
 end
