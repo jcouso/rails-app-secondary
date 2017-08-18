@@ -25,6 +25,7 @@ source "https://rails-assets.org" do
 end
 gem 'rails-i18n', '5.0.3'
 gem 'jquery-inputmask-rails'
+gem 'animate-rails'
 
 group :development, :test do
   gem 'pry-byebug'
