@@ -13,7 +13,7 @@ before_action :set_security, only: [:edit, :update, :destroy, :show]
     @security = current_user.securities.new(security_params)
     authorize @security
     if @security.save
-      redirect_to admin_securities_path(@security)
+      redirect_to admin_securities_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ before_action :set_security, only: [:edit, :update, :destroy, :show]
 
   def update
     if @security.update(security_params)
-      redirect_to admin_securities_path(@security)
+      redirect_to admin_securities_path
     else
       render :edit
     end
