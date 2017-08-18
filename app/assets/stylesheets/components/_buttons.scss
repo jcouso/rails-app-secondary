@@ -7,7 +7,7 @@
   margin-bottom: 0.95em;
   border-radius: 50px;
   font-weight: 300;
-  transition: background-color 1s ease;
+  transition: background-color .5s ease;
   &:hover {
     text-decoration: none;
     color: white;
@@ -23,7 +23,7 @@
   margin-right: 0.95em;
   border-radius: 50px;
   font-weight: bold;
-  transition: background-color 1s ease;
+  transition: background-color .5s ease;
   &:hover {
     text-decoration: none;
     color: white;
@@ -39,10 +39,26 @@
   margin-right: 0.95em;
   border-radius: 50px;
   font-weight: bold;
-  transition: background-color 1s ease;
+  transition: background-color .5s ease;
   &:hover {
     text-decoration: none;
     color: white;
     background-color: $green;
+  }
+}
+
+.btn-navy-blue {
+  color: $navy-blue;
+  background-color: transparent;
+  border: 1.5px solid $navy-blue;
+  padding: 0.5em 1em;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color .5s ease;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $navy-blue;
   }
 }

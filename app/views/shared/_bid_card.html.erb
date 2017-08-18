@@ -1,0 +1,13 @@
+<div class="bid-card text-center">
+  <p class="text-logo">secondary.</p>
+  <%= simple_form_for [@security] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :price, autofocus: true %>
+      <%= f.input :rate, autofocus: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag 'Calcular', class: 'btn btn-navy-blue' %>
+    </div>
+  <% end %>
+</div>
