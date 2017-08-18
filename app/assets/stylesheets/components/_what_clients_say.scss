@@ -2,19 +2,27 @@
   padding: 20px;
     h2 {
       color: white;
-      font-weight: bold;
+      font-weight: 400;
       padding: 10px 0;
     }
 
     h3 {
-      color: $medium-blue;
-      font-weight: bold;
+      color: white;
+      font-weight: 500;
       font-size: 20px;
+      margin: 10px;
     }
 
     p {
       margin: 20px;
-      color: black;
+      color: white;
       opacity: 0.8;
+    }
+
+    i {
+      position: relative;
+      top: 10px;
+      color:white;
+      font-size: 25px;
     }
 }
