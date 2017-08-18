@@ -27,11 +27,11 @@
         </tr>
         <tr>
           <td>PU</td>
-          <td>R$ <%= security.unit_price.round(2) %></td>
+          <td><%= number_to_currency(security.unit_price) %></td>
         </tr>
         <tr>
           <td>Valor Inicial</td>
-          <td>R$ <%= security.value.round(2) %></td>
+          <td><%= number_to_currency(security.value) %></td>
         </tr>
       </tbody>
     </table>
