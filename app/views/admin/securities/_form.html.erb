@@ -12,7 +12,7 @@
             <%= f.association :issuer, label: 'Emissor' %>
             <%= f.input :code, label: 'Código do título' %>
             <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
-            <%= f.input :price, label: 'Preço de venda', value: "$" %>
+            <%= f.input :price, label: 'Preço de venda' %>
             <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
               <div class="row">
                 <div class="col-sm-6">
@@ -32,7 +32,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título"%>
+            <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título" %>
           </div>
         <% end %>
       </div>

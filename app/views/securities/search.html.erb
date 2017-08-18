@@ -4,18 +4,24 @@
     <p>A sua plataforma para negociar títulos de renda fixa.</p>
       <div class="container">
         <div class="row">
-          <%= form_tag(search_securities_path, method: :get,  class: "form-group form-group-md") do %>
-            <div class="header-input col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-4 col-md-4">
-              <%= select_tag :price, prompt: "Quanto você quer investir?", collection: ["Leilão", "Preço fixo", "Negociação aberta"], class: "form-control" %>
-            </div>
-            <div class="header-input col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-4 col-md-4">
-              <%= select_tag :maturity, prompt: "Qual vencimento você quer?", class: "form-control" %>
-            </div>
-            <div class="header-input col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-4 col-md-4">
-              <%= submit_tag "Buscar títulos", class: "btn btn-success", style: "box-shadow: 1px 1px 3px rgba(0,0,0,0.1);" %>
-            </div>
-          <% end %>
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <%= simple_form_for(@search, url: search_securities_path, method: :get) do |f| %>
+              <div class="form-input form-group-sm">
+                <%= f.input :price, prompt: "Qual o valor máximo que você quer investir?", label: "Preço", as: :integer %>
+                <%= f.input :maturity, prompt: "Qual vencimento você quer?", label: "Vencimento" %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, class: "btn btn-primary", value: "Buscar títulos" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
   </div>
 </div>
+
+<% @securities.each do |security| %>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <%=render 'shared/security_card', security: security, link_path: admin_security_bids_path(security) %>
+  </div>
+<% end %>
