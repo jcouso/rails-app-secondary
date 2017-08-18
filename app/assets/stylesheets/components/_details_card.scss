@@ -1,0 +1,84 @@
+.details-card {
+  background-color:white;
+  color: #7f7f7f;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #cccccc;
+  transition: border .5s;
+  border: 1px solid white;
+  border-radius: 3px;
+  border-top: 7px solid;
+  margin: 10px 0;
+  h1 {
+    font-family: "Open Sans";
+    font-size: 30px;
+    font-weight: 700;
+    padding-bottom: 0.3em;
+    border-bottom: 3.5px solid #b3b3b3;
+  }
+  h2 {
+    border-bottom: 3.5px solid $navy-blue;
+  }
+}
+
+
+#bradesco {
+  border-top-color: #CD072F;
+  h1 {
+    border-bottom-color: #CD072F;
+  }
+  &:hover {
+    border: 1px solid #CD072F;
+    border-top: 7px solid #CD072F;
+  }
+}
+
+#vale {
+  border-top-color: #009399;
+  h1 {
+    border-bottom-color: #009399;
+  }
+  &:hover {
+    border: 1px solid #009399;
+    border-top: 7px solid #009399;
+  }
+}
+
+
+
+#banco-do-brasil {
+  border-top-color: #FFF200;
+  h1 {
+    border-bottom-color: #FFF200;
+  }
+  &:hover {
+    border: 1px solid #FFF200;
+    border-top: 7px solid #FFF200;
+  }
+}
+
+#banco-bmg {
+  border-top-color: #EC860E;
+  h1 {
+    border-bottom-color: #EC860E;
+  }
+  &:hover {
+    border: 1px solid #EC860E;
+    border-top: 7px solid #EC860E;
+  }
+}
+
+
+
+#banco-original {
+  border-top-color: #56B766;
+  h1 {
+    border-bottom-color: #56B766;
+  }
+  &:hover {
+    border: 1px solid #56B766;
+    border-top: 7px solid #56B766;
+  }
+}
+
