@@ -52,6 +52,10 @@ font-size: 30px;
   <br>
   <div class="row">
     <div class="col-md-9">
+    <% if !@security.status.nil? %>
+      <p>Titulo Vendido</p>
+      <% else %>
+
     <h1 class="bid-title"> Ofertas:</h1>
       <% bids = @bids.to_a %>
       <% best_offer = bids.shift %>
@@ -62,7 +66,9 @@ font-size: 30px;
             <li>Lance: <%= number_to_currency(best_offer.price) %> de <%= best_offer.buyer.email %></li>
           </ul>
           <div id="controls">
-            <%= link_to "Aceitar", "#", class: "btn btn-success" %>
+            <%= simple_form_for(["admin", @security, best_offer]) do |form| %>
+            <%= form.button :submit, "Aceitar", class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
 
@@ -74,6 +80,7 @@ font-size: 30px;
         </div>
       <% end %>
     </div>
+    <% end%>
     <div class="col-md-3">
       <%=render 'shared/security_card', security: @security, link_path: security_path(@security) %>
     </div>
