@@ -7,32 +7,32 @@
         <%= simple_form_for([:admin, @security]) do |f| %>
 
           <div class="form-input form-group-sm">
-            <%= f.input :mode, collection: ["Leilão", "Preço fixo", "Negociações abertas"], prompt: "Como você quer vender seu título?" %>
-            <%= f.association :security_type %>
-            <%= f.association :issuer %>
-            <%= f.input :code %>
-            <%= f.input :maturity %>
-            <%= f.input :price %>
-            <%= f.input :date_limit %>
+            <%= f.input :mode, label: 'Modo de venda', collection: ["Leilão", "Preço fixo", "Negociação aberta"], prompt: "Como você quer vender seu título?" %>
+            <%= f.association :security_type, label: 'Tipo de título' %>
+            <%= f.association :issuer, label: 'Emissor' %>
+            <%= f.input :code, label: 'Código do título' %>
+            <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
+            <%= f.input :price, label: 'Preço de venda', value: "$" %>
+            <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
               <div class="row">
                 <div class="col-sm-6">
-                  <%= f.input :quantity %>
+                  <%= f.input :quantity, label: 'Quantidade' %>
                 </div>
                 <div class="col-sm-6">
-                  <%= f.input :unit_price %>
+                  <%= f.input :unit_price, label: 'Preço unitário' %>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-6">
-                  <%= f.input :rate %>
+                  <%= f.input :rate, label: 'Taxa' %>
                 </div>
                 <div class="col-sm-6">
-                  <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"] %>
+                  <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
                 </div>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, class: "btn btn-primary"%>
+            <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título"%>
           </div>
         <% end %>
       </div>

@@ -1,3 +1,32 @@
-<h1>Show</h1>
+<style>
+  .details-card {
+    background-color:white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #cccccc;
+    transition: border .5s;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+}
+  h1 {
+      font-size: 30px;
+      font-weight: 700;
+      border-bottom: 3px solid green;
+}
+</style>
 
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="details-card col-md-9">
+      <%= image_tag @security.issuer.name.downcase+"-logo.png", height: "100" , id: "logo" %>
+      <h1><%= @security.security_type.name %> - <%= @security.issuer.name %></h1>
+      <!-- <%#= render 'shared/security_type_description' %> deverá dizer o que é o tipo do título -->
+      <%= render 'shared/fgc' %>
 
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+</div>
