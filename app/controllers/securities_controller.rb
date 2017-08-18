@@ -7,6 +7,7 @@ class SecuritiesController < ApplicationController
   end
 
   def show
+    @bid = Bid.new
   end
 
   def search
@@ -28,6 +29,7 @@ class SecuritiesController < ApplicationController
       @securities = @securities.where("unit_price * quantity <= ?", @search.price)
     end
   end
+
 
   private
 

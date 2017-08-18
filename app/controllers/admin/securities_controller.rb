@@ -23,9 +23,13 @@ before_action :set_security, only: [:edit, :update, :destroy, :show]
   end
 
   def edit
+
   end
 
   def update
+
+
+
     if @security.update(security_params)
       redirect_to admin_securities_path
     else

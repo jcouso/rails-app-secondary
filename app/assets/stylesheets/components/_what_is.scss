@@ -3,7 +3,8 @@
   background-color: white;
   background-size: cover;
     h2 {
-      color: black;
+      color: #333333;
+      font-size: 22px;
       font-weight: bold;
       padding: 10px 0;
     }
@@ -15,7 +16,9 @@
     }
 
     p {
+      color: #4c4c4c;
+      font-size: 16px;
+      font-weight: 300;
       margin: 20px;
-      color: black;
     }
 }

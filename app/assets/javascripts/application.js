@@ -1,13 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require_tree .
 //= require bootstrap-datepicker
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
 
-$(document).ready(function() {
-  $('.datepicker').datepicker({
-      format: "yyyy/mm/dd",
-      language: "pt",
-      todayHighlight: true
-  });
-});
+//= require_tree .
