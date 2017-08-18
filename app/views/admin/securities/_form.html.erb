@@ -12,19 +12,19 @@
             <%= f.association :issuer, label: 'Emissor' %>
             <%= f.input :code, label: 'Código do título' %>
             <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
-            <%= f.input :price, label: 'Preço de venda', value: "$" %>
+            <%= f.input :price, label: 'Preço de venda', as: 'string', input_html: {class: "money"} %>
             <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
               <div class="row">
                 <div class="col-sm-6">
                   <%= f.input :quantity, label: 'Quantidade' %>
                 </div>
                 <div class="col-sm-6">
-                  <%= f.input :unit_price, label: 'Preço unitário' %>
+                  <%= f.input :unit_price, label: 'Preço unitário', as: 'string', input_html: {class: "money"} %>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-6">
-                  <%= f.input :rate, label: 'Taxa' %>
+                  <%= f.input :rate, label: 'Taxa', as: 'string', input_html: {class: "percent"} %>
                 </div>
                 <div class="col-sm-6">
                   <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
