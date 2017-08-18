@@ -1,0 +1,120 @@
+<% if @security.security_type.name == "CDB" %>
+  <p>Certificado de Depósito Bancário (CDB) - são títulos nominativos emitidos pelos bancos e caixas econômicas vendidos aos investidores como forma de captação de recursos do emissor.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Aplicação garantida pelo Fundo Garantidor de Créditos (FGC) para valores até R$ 250 mil, por CPF ou CNPJ, por instituição ou conglomerado financeiro;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ);</li>
+    <li>IOF para resgate antes de 30 dias;</li>
+    <li>IR via tabela regressiva.</li>
+  </ul>
+<% elsif @security.security_type.name == "CRA" %>
+  <p>CRA (Certificado de Recebíveis do Agronegócio) - estão vinculados a direitos creditórios originários de negócios realizados, em sua maioria, por produtores rurais ou suas cooperativas, relacionados ao financiamento da atividade agropecuária.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Possibilidade de estruturas com garantias (como alienação da terra e penhor da produção);</li>
+    <li>São negociados no balcão e registrados na Cetip ou no BovespaFix;</li>
+    <li>Isenção de IR e IOF para pessoa física no rendimento; ganhos de capital auferidos na alienação ou cessão dos ativos são isentos de IR para Pessoa Física (Instrução 1585);</li>
+    <li>Destinado exclusivamente a investidores qualificados e profissionais;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ).</li>
+  </ul>
+  <p><strong>Trata-se de uma modalidade de investimento que não conta com a garantia do Fundo Garantidor de Crédito (FGC).</strong></p>
+<% elsif @security.security_type.name == "CRI" %>
+  <p>CRI (Certificado de Recebíveis Imobiliários) - são títulos lastreados em créditos imobiliários, representativos de parcelas de um direito creditório.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Possibilidade de estruturas com garantias (como alienação da terra e penhor da produção);</li>
+    <li>São negociados no balcão e registrados na Cetip ou no BovespaFix;</li>
+    <li>Isenção de IR e IOF para pessoa física no rendimento; ganhos de capital auferidos na alienação ou cessão dos ativos são isentos de IR para Pessoa Física (Instrução 1585);</li>
+    <li>Destinado exclusivamente a investidores qualificados e profissionais;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ).</li>
+  </ul>
+  <p><strong>Trata-se de uma modalidade de investimento que não conta com a garantia do Fundo Garantidor de Crédito (FGC).</strong></p>
+<% elsif @security.security_type.name == "DEBENTURE" %>
+  <p>Debêntures - as debêntures são valores mobiliários que representam dívidas de médio e longo prazos de Sociedades Anônimas (emissoras).</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>São negociadas no balcão e registradas na Cetip ou no BovespaFix;</li>
+    <li>Podem contar com a isenção de IR e IOF (para pessoa física) no rendimento e no ganho de capital, caso estejam enquadradas como debêntures de infraestrutura (Lei 12.431);</li>
+    <li>Liquidez restrita no mercado secundário;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ).</li>
+  </ul>
+  <p><strong>Trata-se de uma modalidade de investimento que não conta com a garantia do Fundo Garantidor de Crédito (FGC).</strong></p>
+<% elsif @security.security_type.name == "DPGE" %>
+  <p>Depósito a prazo com garantia especial do FGC (DPGE) - depósito a prazo emitido por uma instituição financeira. Os bancos comerciais, múltiplos, de desenvolvimento e investimento, as sociedades de crédito, financiamento e investimento e as caixas econômicos são as instituições autorizadas a emitir este ativo.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Aplicação garantida pelo Fundo Garantidor de Créditos (FGC) para valores até R$20 milhões (principal mais juros), por CPF ou CNPJ, por instituição ou conglomerado financeiro;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ);</li>
+    <li>IOF para resgate antes de 30 dias;</li>
+    <li>IR via tabela regressiva.</li>
+  </ul>
+<% elsif @security.security_type.name == "FIDC" %>
+  <p>FIDC (Fundo de Investimento em Direitos Creditórios) - Fundo de investimento que destina parcela preponderante de seu patrimônio líquido para aplicação em direitos e títulos representativos de créditos (direitos creditórios) provenientes de operações comerciais, industriais, imobiliárias, financeiras ou de prestação de serviços, entre outras.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>Rentabilidade diferenciada quando comparado a ativos com classificação de risco semelhante;</li>
+    <li>Pode ser aberto (permitindo a entrada e saída de cotistas a qualquer tempo) ou fechado (a entrada de cotistas não é permitida após o período de captação, e a saída não é permitida antes do vencimento);</li>
+    <li>Pode ter prazo de duração determinado (fundo fechado) ou indeterminado (fundo aberto);</li>
+    <li>Destinado exclusivamente a investidores qualificados e profissionais;</li>
+    <li>Investimento mínimo inicial de R$ 25 mil;</li>
+  </ul>
+  <p><strong>Trata-se de uma modalidade de investimento que não conta com a garantia do Fundo Garantidor de Crédito (FGC).</strong></p>
+<% elsif @security.security_type.name == "LC" %>
+  <p>LC (Letra de Câmbio) - Instrumento de captação das financeiras, com o objetivo de financiar suas atividades. Você empresta dinheiro às financeiras em troca de uma rentabilidade preestabelecida.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Aplicações garantidas pelo Fundo Garantidor de Créditos (FGC) para valores até R$ 250 mil, por CPF ou CNPJ, por instituição ou conglomerado financeiro;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ);</li>
+    <li>IOF para resgate antes de 30 dias;</li>
+    <li>IR via tabela regressiva.</li>
+  </ul>
+<% elsif @security.security_type.name == "LCA" %>
+  <p>LCA (Letra de Crédito do Agronegócio) - Título emitido por instituições financeiras públicas e privadas, vinculado a direitos creditórios originários do agronegócio.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Aplicações garantidas pelo Fundo Garantidor de Créditos (FGC) para valores até R$ 250 mil, por CPF ou CNPJ, por instituição ou conglomerado financeiro;</li>
+    <li>Isenção de IR para pessoa física no rendimento e no ganho de capital;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ);</li>
+    <li>IR via tabela regressiva para investidores PJ.</li>
+  </ul>
+<% elsif @security.security_type.name == "LCI" %>
+  <p>LCI (Letra de Crédito Imobiliário) - Instrumento de captação que pode ser emitido por instituições autorizadas pelo Banco Central, com objetivo de financiar o setor imobiliário que tem como lastro financiamentos imobiliários garantidos por hipoteca ou alienação fiduciária do imóvel.
+</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Aplicações garantidas pelo Fundo Garantidor de Créditos (FGC) para valores até R$ 250 mil, por CPF ou CNPJ, por instituição ou conglomerado financeiro;</li>
+    <li>Isenção de IR para pessoa física no rendimento e no ganho de capital;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ);</li>
+    <li>IR via tabela regressiva para investidores PJ.</li>
+  </ul>
+<% elsif @security.security_type.name == "LF" %>
+  <p>LF (Letra Financeira) - Instrumento de captação de recursos exclusivo das instituições financeiras.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>Prazo mínimo de 2 anos (sênior) e 5 anos (subordinada);</li>
+    <li>É vedado resgate total ou parcial antes do vencimento;</li>
+    <li>Investimento mínimo de R$150 mil (sênior) e R$ 300 mil (subordinada);</li>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ).</li>
+  </ul>
+  <p><strong>Trata-se de uma modalidade de investimento que não conta com a garantia do Fundo Garantidor de Crédito (FGC).</strong></p>
+<% elsif @security.security_type.name == "LFSUB" %>
+  <p>LFSUB (Letra Financeira Subordinada) - Instrumento de captação de recursos exclusivo das instituições financeiras.</p>
+  <p>CARACTERÍSTICAS:</p>
+  <ul>
+    <li>Prazo mínimo de 5 anos;</li>
+    <li>É vedado resgate total ou parcial antes do vencimento;</li>
+    <li>Investimento mínimo de R$ 300 mil;</li>
+    <li>A remuneração pode ser em % do CDI, CDI + spread, Índices de preços (ex: IGP-M, IPCA) ou Taxa Prefixada;</li>
+    <li>Produto registrado na CETIP em nome do cliente (CPF/CNPJ).</li>
+  </ul>
+  <p><strong>Trata-se de uma modalidade de investimento que não conta com a garantia do Fundo Garantidor de Crédito (FGC).</strong></p>
+<% end %>
