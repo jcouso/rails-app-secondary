@@ -2,5 +2,8 @@
   <p><i class="fa fa-user-circle" aria-hidden="true"></i></p>
   <p><strong>Nome:</strong> <%= user.name%></p>
   <p><strong>Usuario Desde:</strong> <%= user.created_at.strftime("%d/%m/%Y")%></p>
-  <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-success btn-sm" %>
+  <p><strong>Ofertas atuais:</strong><%#= user.bids.count %></p>
+  <p><strong>Títulos cadastrados:</strong><%#= user. %></p>
+  <p><strong>Saldo em conta:</strong></p>
+  <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-navy-blue btn-sm" %>
 </div>

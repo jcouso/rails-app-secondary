@@ -85,7 +85,7 @@
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Entrar"), new_user_session_path, class: "btn btn-sm btn-navbar" %>
-      <%= link_to t(".sign_up", default: "Crie a sua conta"), new_user_registration_path, class: "btn btn-sm btn-navbar-create-account" %>
+      <%= link_to t(".sign_up", default: "Crie sua conta"), new_user_registration_path, class: "btn btn-sm btn-navbar-create-account" %>
     <% end %>
   </div>
 
@@ -93,11 +93,41 @@
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <% if user_signed_in? %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+
+        <li>
+          <%= link_to edit_user_registration_path do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Meus dados") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-university"></i> <%= t(".profile", default: "Minha conta") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_securities_path do %>
+            <i class="fa fa-file-text-o"></i>  <%= t(".securities", default: "Meus títulos") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_mybids_path do %>
+            <i class="fa fa-handshake-o"></i>  <%= t(".mybids", default: "Minhas ofertas enviadas") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
       </ul>
+      <% else %>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><%= link_to t(".sign_in", default: "Entrar"), new_user_session_path %></li>
+        <li><%= link_to t(".sign_up", default: "Crie sua conta"), new_user_registration_path %></li>
+      </ul>
+      <% end %>
     </div>
   </div>
   </div>
