@@ -8,36 +8,37 @@
         <%= simple_form_for([:admin, @security]) do |f| %>
 
           <div class="form-input form-group-sm">
-            <%= f.input :mode, label: 'Modo de venda', collection: ["Leilão", "Preço fixo", "Negociação aberta"], prompt: "Como você quer vender seu título?" %>
+            <%= f.input :mode, label: 'Como você quer vender seu título?', collection: ["Leilão", "Preço fixo", "Negociação aberta"] %>
             <%= f.association :security_type, label: 'Tipo de título' %>
             <%= f.association :issuer, label: 'Emissor' %>
             <%= f.input :code, label: 'Código do título' %>
             <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
             <%= f.input :price, label: 'Preço de venda' %>
             <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
-              <div class="row">
-                <div class="col-sm-6">
-                  <%= f.input :quantity, label: 'Quantidade' %>
-                </div>
-                <div class="col-sm-6">
-                  <%= f.input :unit_price, label: 'Preço unitário de compra', as: 'string', input_html: {class: "money"} %>
-                </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= f.input :quantity, label: 'Quantidade' %>
               </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <%= f.input :rate, label: 'Taxa', as: 'string', input_html: {class: "percent"} %>
-                </div>
-                <div class="col-sm-6">
-                  <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
-                </div>
-          </div>
+              <div class="col-sm-6">
+                <%= f.input :unit_price, label: 'Preço unitário de compra', as: 'string', input_html: {class: "money"} %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= f.input :rate, label: 'Taxa', as: 'string', input_html: {class: "percent"} %>
+              </div>
+              <div class="col-sm-6">
+                <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
+              </div>
+            </div>
 
-          <div class="form-actions">
-            <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título" %>
-          </div>
-        <% end %>
-        <br>
-        <%= link_to 'Voltar', :back, class: "btn btn-danger" %>
+            <div class="form-actions">
+              <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título" %>
+            </div>
+          <% end %>
+          <br>
+          <%= link_to 'Voltar', :back, class: "btn btn-danger" %>
+        </div>
       </div>
     </div>
   </div>
