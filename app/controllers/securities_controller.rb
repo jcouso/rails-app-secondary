@@ -3,7 +3,7 @@ class SecuritiesController < ApplicationController
   before_action :set_security, only: [:show]
   layout "landing-page", only: [ :index ]
   def index
-    @securities = policy_scope(Security)
+    @securities = Security.all
   end
 
   def show
@@ -11,8 +11,7 @@ class SecuritiesController < ApplicationController
   end
 
   def search
-    @securities = policy_scope(Security).order("created_at DESC")
-    authorize @securities
+    @securities = Security.all.order("created_at DESC")
     @search = Search.new
 
     if params[:search].present?
@@ -35,7 +34,5 @@ class SecuritiesController < ApplicationController
 
     def set_security
         @security = Security.find(params[:id])
-        authorize @security
-
   end
 end
