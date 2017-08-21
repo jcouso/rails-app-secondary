@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'securities#index'
 
   namespace :admin do
+    resources :statements, only: [:index]
     resources :securities do
       resources :bids
     end
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
       get 'search', to: 'securities#search'
     end
   end
+
 end
