@@ -8,7 +8,7 @@
             <%= simple_form_for(@search, url: search_securities_path, method: :get) do |f| %>
               <div class="form-input form-group-sm row">
                 <div class="col-sm-1">
-                  <%= f.input :security_type_id, prompt: "Tipo", collection: SecurityType.all, label: false %>
+                  <%= f.input :security_type_id, prompt: "Tipo", collection: SecurityType.all, include_blank: "Todos", label: false %>
                 </div>
                 <div class="col-sm-3">
                   <%= f.input :price, placeholder: "Quanto quer investir?", as: :integer, label: false %>
@@ -17,17 +17,17 @@
                   <%= f.input :maturity, placeholder: "Vencimento máximo?", as: :string, input_html: {class: "datepicker"}, label: false %>
                 </div>
                 <div class="col-sm-2">
-                  <%= f.input :issuer_id, prompt: "Emissor", collection: Issuer.all, label: false %>
+                  <%= f.input :issuer_id, prompt: "Emissor", collection: Issuer.all, include_blank: "Todos", label: false %>
                 </div>
                 <div class="col-sm-1">
                   <%= f.input :rate, placeholder: "Taxa", label: false %>
                  </div>
                 <div class="col-sm-2">
-                  <%= f.input :indexer, prompt: "Indexador", collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: false %>
+                  <%= f.input :indexer, prompt: "Indexador", collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], include_blank: "Todos", label: false %>
                 </div>
               </div>
               <div class="form-input form-group-sm row" align="center">
-                <%= f.button :submit, class: "btn btn-primary", value: "Buscar títulos" %>
+                <%= f.button :submit, class: "btn btn-success", value: "Buscar títulos" %>
               </div>
             <% end %>
           </div>
@@ -36,7 +36,15 @@
   </div>
 </div>
 
-<div class="container">
+<br>
+
+<div class="container text-center">
+
+  <% if @search.empty? %>
+    <h3> Todos os títulos cadastrados <h3>
+  <% else %>
+    <h3> Resultados da sua busca <h3>
+  <% end %>
   <% @securities.each do |security| %>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
       <%=render 'shared/security_card', security: security, link_path: admin_security_bids_path(security) %>
