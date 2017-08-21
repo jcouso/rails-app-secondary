@@ -52,6 +52,6 @@ class SecuritiesController < ApplicationController
     end
 
     def search_params
-      params.require(:search).permit(:price, :maturity, :issuer_id, :rate, :indexer, :security_type_id)
+      params.require(:search).permit(:price, :maturity, :issuer_id, :rate, :indexer, :security_type_id, :file, :file_cache)
     end
 end
