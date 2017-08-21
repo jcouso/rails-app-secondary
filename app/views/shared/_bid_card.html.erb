@@ -1,9 +1,16 @@
 <div class="bid-card text-center">
-  <p class="text-logo">secondary.</p>
+  <h3 class="text-logo">secondary.</h3>
   <%= simple_form_for [@security] do |f| %>
     <div class="form-inputs">
-      <%= f.input :price, autofocus: true %>
-      <%= f.input :rate, autofocus: true %>
+      <%= f.input :price, label: 'Valor de Oferta', autofocus: true %>
+      <div class="row">
+        <div class="col-sm-6">
+        <%= f.input :rate_in_percent, label: 'Taxa de Oferta', autofocus: true %>
+        </div>
+        <div class="col-sm-6">
+        <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
+        </div>
+      </div>
     </div>
 
     <div class="form-actions">
@@ -11,3 +18,4 @@
     </div>
   <% end %>
 </div>
+
