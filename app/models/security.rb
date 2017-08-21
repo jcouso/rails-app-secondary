@@ -22,6 +22,10 @@ class Security < ApplicationRecord
     self.quantity * self.unit_price
   end
 
+  def rate_in_percent
+    (self.rate*100).round(2)
+  end
+
   private
 
   def maturity_cannot_be_in_the_past
