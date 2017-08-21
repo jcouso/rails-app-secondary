@@ -17,7 +17,6 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'date_validator'
-gem "pundit"
 gem 'faker'
 gem 'cloudinary'
 source "https://rails-assets.org" do
@@ -34,5 +33,4 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
 end
