@@ -1,17 +1,15 @@
 class Admin::SecuritiesController < ApplicationController
 before_action :set_security, only: [:edit, :update, :destroy, :show]
   def index
-    @securities = policy_scope(Security).where(user: current_user)
+    @securities = Security.all.where(user: current_user)
   end
 
   def new
     @security = Security.new
-    authorize @security
   end
 
   def create
     @security = current_user.securities.new(security_params)
-    authorize @security
     if @security.save
       redirect_to admin_securities_path
     else
@@ -27,9 +25,6 @@ before_action :set_security, only: [:edit, :update, :destroy, :show]
   end
 
   def update
-
-
-
     if @security.update(security_params)
       redirect_to admin_securities_path
     else
@@ -46,7 +41,6 @@ before_action :set_security, only: [:edit, :update, :destroy, :show]
 
   def set_security
     @security = current_user.securities.find(params[:id])
-    authorize @security
   end
 
   def security_params
