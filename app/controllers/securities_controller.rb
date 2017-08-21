@@ -1,6 +1,6 @@
 class SecuritiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search]
-  before_action :set_security, only: [:show]
+  before_action :set_security, only: [:show, :calculate]
   layout "landing-page", only: [ :index ]
   def index
     @securities = Security.all
@@ -29,6 +29,15 @@ class SecuritiesController < ApplicationController
     end
   end
 
+  def calculate
+    @bid = Bid.new
+
+    if params[:bid_calculation][:mode] == "price"
+      @bid.price = params[:bid_calculation][:price]
+    else
+      @bid.rate = params[:bid_calculation][:rate_in_percent]
+    end
+  end
 
   private
 

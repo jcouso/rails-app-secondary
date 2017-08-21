@@ -30,13 +30,13 @@ class Security < ApplicationRecord
 
   def maturity_cannot_be_in_the_past
     if maturity.present? && maturity < Date.today
-      errors.add(:maturity, "Título não pode já estar vencido")
+      errors.add(:maturity, "Título não pode estar vencido")
     end
   end
 
   def date_limit_cannot_be_in_the_past
     if date_limit.present? && date_limit < Date.today
-      errors.add(:date_limit, "Escolha uma data fútura")
+      errors.add(:date_limit, "Escolha uma data futura")
     end
   end
 

@@ -5,6 +5,12 @@ class Admin::BidsController < ApplicationController
     @bid = @security.bids.where(status: true)
   end
 
+  def create
+    @security = Security.find(params[:security_id])
+    @bid = Bid.create_attributes
+    @bid.security = @security
+  end
+
   def update
     @security = Security.find(params[:security_id])
     @bid = Bid.find(params[:id])

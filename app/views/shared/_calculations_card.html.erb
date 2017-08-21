@@ -7,18 +7,22 @@
       <%= image_tag @security.issuer.name.downcase+"-logo.png", height: "40" , id: "logo" %>
       <p><strong>Titulo <%= @security.issuer.name %></strong></p>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped" id="calculations">
       <tbody>
         <tr>
           <td>Prazo até Vencimento:</td>
           <td><%= time_to_maturity %> dias</td>
         </tr>
         <tr>
-          <td>Rentabilidade Bruta:</td>
-          <td><%= @security.date_limit %></td>
+          <td>CDI últimos 12 meses:</td>
+          <td><%= cdi_12m %></td>
         </tr>
         <tr>
-          <td>CDI:</td>
+          <td>Rentabilidade Bruta (%CDI):</td>
+          <td><%#= gross_profitability_cdi %></td>
+        </tr>
+        <tr>
+          <td>CDI hoje:</td>
           <td><%= cdi %></td>
         </tr>
         <tr>
@@ -28,6 +32,10 @@
         <tr>
           <td>Quantidade:</td>
           <td><%= @security.quantity %></td>
+        </tr>
+        <tr>
+          <td>Bid:</td>
+          <td><%= @bid.price %></td>
         </tr>
         <tr>
           <td>PU</td>
