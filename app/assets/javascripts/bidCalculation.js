@@ -7,7 +7,7 @@ $(function() {
     } else {
       $(".rate-mode").removeClass("hidden");
       $(".price-mode").addClass("hidden");
-      $("#bid_calculation_rate_in_percent").focus();
+      $("#bid_calculation_rate").focus();
     }
   });
 });

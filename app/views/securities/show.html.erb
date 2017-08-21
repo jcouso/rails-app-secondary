@@ -5,7 +5,7 @@
       <%= image_tag @security.issuer.name.downcase+"-logo.png", height: "100" , id: "logo" %>
       <h1><%= @security.security_type.name %> - <%= @security.issuer.name %></h1>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
           <%= render 'shared/product_info' %>
         </div>
         <div class="col-md-4">

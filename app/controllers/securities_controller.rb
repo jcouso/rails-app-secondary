@@ -35,13 +35,13 @@ class SecuritiesController < ApplicationController
     if params[:bid_calculation][:mode] == "price"
       @bid.price = params[:bid_calculation][:price]
     else
-      @bid.rate = params[:bid_calculation][:rate_in_percent]
+      @bid.rate = params[:bid_calculation][:rate]
     end
   end
 
   private
 
     def set_security
-        @security = Security.find(params[:id])
+      @security = Security.find(params[:id])
   end
 end

@@ -5,7 +5,7 @@
   <div class="description">
     <div class="security-card-header">
       <%= image_tag @security.issuer.name.downcase+"-logo.png", height: "40" , id: "logo" %>
-      <p><strong>Titulo <%= @security.issuer.name %></strong></p>
+      <p><strong>Sua oferta (calcule antes)</strong></p>
     </div>
     <table class="table table-striped" id="calculations">
       <tbody>
@@ -14,36 +14,36 @@
           <td><%= time_to_maturity %> dias</td>
         </tr>
         <tr>
-          <td>CDI últimos 12 meses:</td>
-          <td><%= cdi_12m %></td>
+          <td>Rentabilidade Bruta:</td>
+          <td><%= number_to_percentage(gross_profitability, precision:2) %></td>
         </tr>
         <tr>
-          <td>Rentabilidade Bruta (%CDI):</td>
-          <td><%#= gross_profitability_cdi %></td>
+          <td>Rentabilidade Líquida:</td>
+          <td><%= number_to_percentage(net_profitability, precision:2) %></td>
         </tr>
         <tr>
           <td>CDI hoje:</td>
-          <td><%= cdi %></td>
+          <td><%= number_to_percentage(cdi.to_f, precision:2) %></td>
         </tr>
         <tr>
-          <td>Taxa:</td>
-          <td><%= (@security.rate*100.00).round(2) %>%</td>
+          <td>Rentabilidade Bruta (%CDI):</td>
+          <td><%= number_to_percentage(gross_profitability_cdi.to_f * 100, precision:2) %></td>
+        </tr>
+        <tr>
+          <td>Rentabilidade Líquida (%CDI):</td>
+          <td><%= number_to_percentage(net_profitability_cdi.to_f * 100, precision:2) %></td>
+        </tr>
+        <tr>
+          <td>PU ofertado:</td>
+          <td><%= number_to_currency(@bid.price.to_f / @security.quantity) %></td>
+        </tr>
+        <tr>
+          <td>Valor ofertado:</td>
+          <td><%= number_to_currency(@bid.price) %></td>
         </tr>
         <tr>
           <td>Quantidade:</td>
           <td><%= @security.quantity %></td>
-        </tr>
-        <tr>
-          <td>Bid:</td>
-          <td><%= @bid.price %></td>
-        </tr>
-        <tr>
-          <td>PU</td>
-          <td><%= number_to_currency(@security.unit_price) %></td>
-        </tr>
-        <tr>
-          <td>Valor Inicial</td>
-          <td><%= number_to_currency(@security.value) %></td>
         </tr>
       </tbody>
     </table>
