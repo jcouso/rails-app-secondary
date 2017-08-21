@@ -14,9 +14,9 @@ class Security < ApplicationRecord
   #validates :rate, presence: true, numericality: true
   #validates :indexer, presence: true
   #validates :unit_price, presence: true, numericality: true
-  validate :maturity_cannot_be_in_the_past
-  validate :date_limit_cannot_be_in_the_past
-  validate :validate_date_limit_before_maturity
+  validate :maturity_cannot_be_in_the_past, on: :create
+  validate :date_limit_cannot_be_in_the_past, on: :create
+  validate :validate_date_limit_before_maturity, on: :create
 
   def value
     self.quantity * self.unit_price
