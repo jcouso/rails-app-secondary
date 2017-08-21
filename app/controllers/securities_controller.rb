@@ -1,7 +1,6 @@
 class SecuritiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search]
-  before_action :set_security, only: [:search]
-  before_action :set_security_show, only: [:show]
+  before_action :set_security, only: [:show]
   layout "landing-page", only: [ :index ]
   def index
     @securities = policy_scope(Security)
@@ -34,13 +33,9 @@ class SecuritiesController < ApplicationController
 
   private
 
-  def set_security
-    @security = current_user.securities.find(params[:price, :maturity])
-    authorize @security
-  end
+    def set_security
+        @security = Security.find(params[:id])
+        authorize @security
 
-    def set_security_show
-    @security = current_user.securities.find(params[:id])
-    authorize @security
   end
 end
