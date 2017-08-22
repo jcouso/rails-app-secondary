@@ -9,7 +9,7 @@
 
 SECURITY_TYPES = ["CDB", "CRA", "CRI", "DB", "DPGE", "FIDC", "LC", "LCA", "LCI", "LF", "LFSUB"]
 
-INDEXERS = ["CDI", "PRE", "IPC-A", "IGP-M"]
+INDEXERS = ["CDI", "PRE", "IPC-A+", "IGP-M+"]
 
 ISSUERS = ["Bradesco", "Banco do Brasil", "Banco Original", "Banco BMG", "Vale"]
 
