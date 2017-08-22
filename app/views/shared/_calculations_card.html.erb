@@ -50,7 +50,7 @@
               <%= number_to_currency(price_calc.to_f, precision:2) %>
             <% else %>
               <%= number_to_currency(@bid.price.to_f, precision:2) %>
-              <% end %>
+            <% end %>
           </td>
         </tr>
         <tr>
@@ -67,7 +67,7 @@
         </tr>
         <tr>
           <td>Comissão:</td>
-          <td><%#= @bid.comission %></td>
+          <td><%#= number_to_percentage(((1+@bid.rate)**(1.to_f/360)-1)*100, precision:4) %></td>
         </tr>
         <tr>
           <td>Valor final (oferta + comissão):</td>
