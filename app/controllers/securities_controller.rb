@@ -1,7 +1,7 @@
 class SecuritiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search]
   before_action :set_security, only: [:show, :calculate]
-  layout "landing-page", only: [ :index ]
+  layout "landing-page", only: [ :index, :search]
   def index
     @securities = Security.all
   end
@@ -11,7 +11,7 @@ class SecuritiesController < ApplicationController
   end
 
   def search
-    @search = Search.new(search_params)
+      @search = Search.new(search_params)
     @securities = Security.all.order("created_at DESC")
 
     if params[:search].present?
@@ -56,11 +56,12 @@ class SecuritiesController < ApplicationController
   private
 
     def set_security
-
         @security = Security.find(params[:id])
     end
 
     def search_params
+      if !params[:search].nil?
       params.require(:search).permit(:price, :maturity, :issuer_id, :rate, :indexer, :security_type_id, :file, :file_cache)
+      end
     end
 end
