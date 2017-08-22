@@ -82,4 +82,5 @@ module ApplicationHelper
       @security.rate.to_f + igpm
     end
   end
+
 end

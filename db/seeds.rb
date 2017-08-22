@@ -36,18 +36,18 @@ end
   quantity = rand(1..30)
   unit_price = rand(1000.00..1500.00)
   Security.create(user: u,
-                      issuer: Issuer.all.sample,
-                      security_type: SecurityType.all.sample,
-                      mode: "Leilão",
-                      code: Faker::Number.number(5),
-                      maturity: Faker::Date.forward(rand(365..1200)),
-                      issue_date: Faker::Date.backward(rand1..720)
-                      date_limit: Faker::Date.forward(14),
-                      quantity: quantity = rand(1..30),
-                      rate: rand(0.10...0.15),
-                      unit_price: unit_price,
-                      price: quantity*unit_price*rand(1...1.10),
-                      indexer: INDEXERS.sample)
+                  issuer: Issuer.all.sample,
+                  security_type: SecurityType.all.sample,
+                  mode: "Leilão",
+                  code: Faker::Number.number(5),
+                  maturity: Faker::Date.forward(rand(365..1200)),
+                  issue_date: Faker::Date.backward(rand(1..720)),
+                  date_limit: Faker::Date.forward(14),
+                  quantity: quantity = rand(1..30),
+                  rate: rand(0.10...0.15),
+                  unit_price: unit_price,
+                  price: quantity*unit_price*rand(1...1.10),
+                  indexer: INDEXERS.sample)
   end
 end
 

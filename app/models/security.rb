@@ -1,5 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
 class Security < ApplicationRecord
   belongs_to :user
   belongs_to :issuer
@@ -21,28 +19,20 @@ class Security < ApplicationRecord
   mount_uploader :file, FileUploader
 
   def value
-    self.quantity * self.unit_price
-  end
-
-  def rate_in_percent
-    (self.rate*100).round(2)
+    quantity * unit_price
   end
 
   def time_elapsed
-    (Time.current - self.issue_date).to_i
+    (Time.current.to_date - issue_date).to_i
   end
 
-  def future_value
+  def current_value
     n = time_elapsed * (360.to_f/365)
-    pv = self.value
-    i_dia = ((self.rate.to_f / 100)+1)**(1.to_f/360)
+    pv = value
+    i_dia = ((rate.to_f / 100)+1)**(1.to_f/360)
     fv = pv.to_f * ((i_dia.to_f)**(n.to_f))
     fv
   end
-
-  # def present_value
-  #   future_value / (rate **)
-  # end
 
   private
 
