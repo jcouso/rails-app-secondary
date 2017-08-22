@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'securities#index'
 
   namespace :admin do
+    resources :statements, only: [:index]
     resources :securities do
       resources :bids
     end
@@ -10,8 +11,13 @@ Rails.application.routes.draw do
   end
 
   resources :securities, only: [:index, :show] do
+    member do
+      post :calculate
+    end
+
     collection do
-      get 'search', to: 'securities#search'
+      get 'search'
     end
   end
+
 end
