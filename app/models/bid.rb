@@ -5,4 +5,8 @@ class Bid < ApplicationRecord
 
   #validates :price, presence: true
   #validates :rate, presence: true
+
+  def comission
+    self.price*0.0025
+  end
 end

@@ -13,13 +13,23 @@ transition: 0.2s ease;
 bottom:0;
 display:flex;
 justify-content: space-between;
-
+align-items: center;
 }
 .offer:hover {
   bottom: 1px;
   box-shadow: 3px 3px 5px #cccccc;
 }
 
+
+
+.offer p {
+  font-size:15px;
+  color:black;
+}
+
+.offer h3 {
+  font-size: 35px;
+}
 .bid-title {
 font-size: 30px;
   font-weight: 700;
@@ -27,10 +37,12 @@ font-size: 30px;
 
 }
 
+
 #best {
   background-color: white;
   border-radius: 3px;
   box-shadow: 3px 3px 7px #cccccc;
+  border-top: 4px solid #324E7B;
 }
 
 #best:hover {
@@ -61,13 +73,17 @@ font-size: 30px;
   font-size: 12px;
  }
 
+ .btn {
+height: 40px !important;
+}
+
 </style>
 <br>
 <%= link_to "voltar", admin_securities_path, class: "links" %>
 <div class="row">
   <div class="col-md-9">
     <% if @bids.empty? %>
-      <h1> Seja o primeiro ate fazer um lançe </h1>
+      <h1> Seja o primeiro ate fazer um lance </h1>
     <% else %>
       <% if !@security.status.nil? %>
         <div class="bid-title">
@@ -75,35 +91,40 @@ font-size: 30px;
             <div class="offer" id="best">
               <i class="fa fa-star" aria-hidden="true"></i>
               <ul>
-                <li>Lance Ganhador: <%= number_to_currency(@bid.first.price) %> de <%= @bid.first.buyer.email %></li>
+                <li>Lance Ganhador: <%= number_to_currency(@bid.first.price) %></li>
               </ul>
             </div>
         </div>
       <% else %>
-        <h1 class="bid-title"> Ofertas:</h1>
+        <h1 class="bid-title"> </h1>
         <% bids = @bids.to_a %>
         <% best_offer = bids.shift %>
 
         <div class="offer" id="best">
           <i class="fa fa-star" aria-hidden="true"></i>
-          <ul>
-            <li>Lance: <%= number_to_currency(best_offer.price) %> de <%= best_offer.buyer.email %></li>
-          </ul>
-          <% if current_user == @security.user %>
-            <div id="controls">
-              <%= simple_form_for(["admin", @security, best_offer]) do |form| %>
-              <%= form.button :submit, "Aceitar", class: "btn btn-primary" %>
-              <% end %>
-              <%= link_to "Rejeitar", admin_security_bid_path(@security, best_offer.id), method: :delete, class: "btn btn-danger", action: :destroy %>
-            </div>
+              <div class="offer-info">
+
+              <% rate = number_to_percentage(((best_offer.price-@security.value)/@security.value)*100, precision: 2) %>
+              <h3><%= number_to_currency(best_offer.price)%> </h3>
+              <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+              <p >Taxa sobre preço base: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
+              <%= %>
+              </div>
+              <% if current_user == @security.user %>
+                <div id="controls">
+                  <%= simple_form_for(["admin", @security, best_offer]) do |form| %>
+                  <%= form.button :submit, "Aceitar", class: "btn btn-primary" %>
+                  <% end %>
+                  <%= link_to "Rejeitar", admin_security_bid_path(@security, best_offer.id), method: :delete, action: :destroy, class: "btn btn-danger" %>
+               </div>
           <% end %>
         </div>
 
         <% bids.to_a.each do |bid| %>
           <div class="offer">
-            <ul>
-              <li>Lance: <%= number_to_currency(bid.price) %> de <%= bid.buyer.email %></li>
-            </ul>
+            <div class="offer-info">
+              <p><%= number_to_currency(bid.price)%> - Lance ofrecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre base: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
+            </div>
           </div>
         <% end %>
       <% end %>

@@ -45,6 +45,19 @@
           <td>Quantidade:</td>
           <td><%= @security.quantity %></td>
         </tr>
+        <tr>
+          <td>IPCA:</td>
+          <td><%= number_to_percentage(ipca, precision:2) %></td>
+        </tr>
+        <tr>
+          <td>IGPM:</td>
+          <td><%= number_to_percentage(igpm, precision:2) %></td>
+        </tr>
+        <tr>
+          <td>i:</td>
+          <td><%= number_to_percentage(((1+@security.rate)**(1.to_f/360)-1)*100, precision:4) %></td>
+          <!-- <td><%#= number_to_percentage(((1+@security.rate)**(1/360)-1)*100, precision:6) %></td> -->
+        </tr>
       </tbody>
     </table>
   </div>
