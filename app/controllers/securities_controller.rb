@@ -1,7 +1,7 @@
 class SecuritiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search]
   before_action :set_security, only: [:show, :calculate]
-  layout "landing-page", only: [ :index, :search]
+  layout "landing-page", only: [ :index, :search ]
   def index
     @securities = Security.all
   end
