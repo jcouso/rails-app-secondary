@@ -29,7 +29,8 @@ class User < ApplicationRecord
     balance = self.balance
     my_bids.each do |bid|
       if self == bid.buyer
-        balance -= bid.price
+        operation = bid.price + bid.comission
+        balance -= operation
       else
         balance += bid.price
       end
