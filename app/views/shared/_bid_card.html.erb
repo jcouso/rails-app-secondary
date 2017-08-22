@@ -1,11 +1,14 @@
 <div class="bid-card text-center">
   <h3 class="text-logo">secondary.</h3>
-  <%= simple_form_for [@security] do |f| %>
+  <%= simple_form_for :bid_calculation, url: calculate_security_path(@security), method: :post, remote: true do |f| %>
     <div class="form-inputs">
-      <%= f.input :price, label: 'Valor de Oferta', autofocus: true %>
-      <div class="row">
+      <%= f.input :mode, as: :radio_buttons, label: "Faça sua oferta", collection: [:price, :rate], checked: :price %>
+      <div class="price-mode">
+        <%= f.input :price, as: :float, label: 'Valor de oferta', autofocus: true, input_html: { min: @security.price.round(2), value: @security.price.round(2), autofocus: true } %>
+      </div>
+      <div class="row rate-mode hidden">
         <div class="col-sm-6">
-        <%= f.input :rate_in_percent, label: 'Taxa de Oferta', autofocus: true %>
+        <%= f.input :rate, label: 'Taxa de oferta', autofocus: true %>
         </div>
         <div class="col-sm-6">
         <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
@@ -13,7 +16,7 @@
       </div>
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions" id="calculate">
       <%= submit_tag 'Calcular', class: 'btn btn-navy-blue' %>
     </div>
   <% end %>

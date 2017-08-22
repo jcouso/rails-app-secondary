@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :securities, only: [:index, :show] do
+    member do
+      post :calculate
+    end
+
     collection do
-      get 'search', to: 'securities#search'
+      get 'search'
     end
   end
 end
