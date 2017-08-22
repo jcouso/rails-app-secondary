@@ -41,6 +41,7 @@ end
                       mode: "Leilão",
                       code: Faker::Number.number(5),
                       maturity: Faker::Date.forward(rand(365..1200)),
+                      issue_date: Faker::Date.backward(rand1..720)
                       date_limit: Faker::Date.forward(14),
                       quantity: quantity = rand(1..30),
                       rate: rand(0.10...0.15),
