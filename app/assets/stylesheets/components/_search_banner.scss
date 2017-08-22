@@ -43,4 +43,21 @@
   margin: 10px 0px;
 }
 
+.banner-title {
+  margin-left:-15px;
+}
 
+@media screen and (max-width: 767px) {
+  .search_banner {
+    height: 35em;
+  }
+
+  .banner-title {
+    margin-top:5em;
+    margin-left: 2em;
+  }
+
+  .input-banner {
+    padding: 0 4em;
+  }
+}
