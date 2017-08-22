@@ -21,4 +21,19 @@ class User < ApplicationRecord
   #validates :account_number, uniqueness: true
   #validates :expedition_date, presence: true, date: true
 
+  def my_bids
+    self.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+  end
+
+  def calc_balance
+    balance = self.balance
+    my_bids.each do |bid|
+      if self == bid.buyer
+        balance -= bid.price
+      else
+        balance += bid.price
+      end
+    end
+    balance
+  end
 end

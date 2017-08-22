@@ -1,6 +1,6 @@
 class Admin::StatementsController < ApplicationController
 
   def index
-    @bids = current_user.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+    @bids = current_user.my_bids
   end
 end
