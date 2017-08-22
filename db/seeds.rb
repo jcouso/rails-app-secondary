@@ -45,7 +45,7 @@ end
                       quantity: quantity = rand(1..30),
                       rate: rand(0.10...0.15),
                       unit_price: unit_price,
-                      price: quantity*unit_price*rand(1.05...1.10),
+                      price: quantity*unit_price*rand(1...1.10),
                       indexer: INDEXERS.sample)
   end
 end
@@ -60,7 +60,7 @@ Security.all.each do |security|
                seller: security.user,
                security: security,
                status: false,
-               price: security.price*rand(1.05..1.10))
+               price: security.quantity*security.unit_price*rand(0.80..1.20))
   end
 end
 
