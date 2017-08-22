@@ -11,7 +11,7 @@ class SecuritiesController < ApplicationController
   end
 
   def search
-      @search = Search.new(search_params)
+    @search = Search.new(search_params)
     @securities = Security.all.order("created_at DESC")
 
     if params[:search].present?
@@ -39,7 +39,7 @@ class SecuritiesController < ApplicationController
     end
 
     if @search.rate.present?
-      @securities =@securities.where("rate >=?", @search.rate).reorder("rate DESC")
+      @securities = @securities.where("rate >=?", @search.rate).reorder("rate DESC")
     end
   end
 

@@ -44,10 +44,12 @@
 
 <div class="container text-center">
 
-  <% if @search.empty? %>
-    <h3> Todos os títulos cadastrados <h3>
+  <% if @securities.empty? %>
+    <h3> Nenhum título foi encontrado com esses critérios </h3>
+  <% elsif @search.empty? %>
+    <h3> Todos os títulos cadastrados </h3>
   <% else %>
-    <h3> Resultados da sua busca <h3>
+    <h3> Resultados da sua busca </h3>
   <% end %>
   <% @securities.each do |security| %>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
