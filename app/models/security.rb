@@ -28,6 +28,14 @@ class Security < ApplicationRecord
     (self.rate*100).round(2)
   end
 
+  def future_value
+    value * (rate ** )
+  end
+
+  def present_value
+    future_value / (rate **)
+  end
+
   private
 
   def maturity_cannot_be_in_the_past
@@ -47,5 +55,4 @@ class Security < ApplicationRecord
       errors.add(:date_limit, "Título não pode ser aberto para negociação após data de vencimento")
     end
   end
-
 end

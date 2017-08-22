@@ -12,7 +12,14 @@
             <%= f.association :security_type, label: 'Tipo de título' %>
             <%= f.association :issuer, label: 'Emissor' %>
             <%= f.input :code, label: 'Código do título (ex: LCI 98E00059531)' %>
-            <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= f.input :issue_date, as: :string, input_html: {class: "datepicker"}, label: 'Data de emissão' %>
+              </div>
+              <div class="col-sm-6">
+                <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
+              </div>
+            </div>
             <div class="row">
               <div class="col-sm-4">
                 <%= f.input :quantity, label: 'Quantidade' %>
@@ -32,11 +39,12 @@
             <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
             <div class="row">
               <div class="col-sm-6">
-                <%= f.input :price, label: 'Valor atual (R$)' %>
+                <%= f.input :current_value, label: 'Valor atual (R$)', readonly: true %>
               </div>
               <div class="col-sm-6">
                 <%= f.input :price, label: 'Preço de venda (R$)' %>
               </div>
+            </div>
             <div class="form-input form-group-sm">
               <%= f.input :file, label: 'Anexar Nota de negociação' %>
               <%= f.input :file_cache, as: :hidden %>
