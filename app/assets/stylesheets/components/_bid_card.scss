@@ -7,15 +7,14 @@
   border-top: 7px solid $navy-blue;
   border-radius: 3px;
   font-size: 12px;
-
   &:hover {
     border-color: $navy-blue;
+  }
+  input {
+    font-size: 15px;
   }
   .text-logo {
     font-size:18px;
     margin-top:7px;
-  }
-  input {
-    font-size: 15px;
   }
 }
