@@ -17,6 +17,7 @@ class Security < ApplicationRecord
   validate :maturity_cannot_be_in_the_past
   validate :date_limit_cannot_be_in_the_past
   validate :validate_date_limit_before_maturity
+  mount_uploader :file, FileUploader
 
   def value
     self.quantity * self.unit_price

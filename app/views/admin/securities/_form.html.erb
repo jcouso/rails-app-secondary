@@ -31,14 +31,18 @@
                 <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
               </div>
             </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título" %>
+            <div class="form-input form-group-sm">
+              <%= f.input :file, label: 'Anexar Nota de negociação' %>
+              <%= f.input :file_cache, as: :hidden %>
             </div>
-          <% end %>
-          <br>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, class: "btn btn-primary", value: "Cadastrar título" %>
+          </div>
+        <% end %>
+        <br>
           <%= link_to 'Voltar', :back, class: "btn btn-danger" %>
-        </div>
       </div>
     </div>
   </div>
