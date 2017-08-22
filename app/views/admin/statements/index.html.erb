@@ -1,25 +1,39 @@
-<div class="container">
-<h1>Extrato de <%= current_user.name %></h1>
-  <div class="row">
-    <div class="col-md-3">
-      <%= render "shared/user_card", user: current_user %>
-    </div>
-
-    <div class="cln-md-9">
-      <% balance = 0 %>
-      <% @bids.each do |bid| %>
-        <% if current_user == bid.buyer %>
-          <% balance -= bid.price %>
-          <p>- <%= bid.price %></p>
-        <% else %>
-          <% balance += bid.price %>
-          <p><%= bid.price %></p>
-        <% end %>
-      <% end %>
-
-      <p>Seu saldo é: <%= balance %></p>
-      <p>Posição até o momento. <%= Time.now.strftime("%d/%m/%Y %H:%M:%S") %></p>
-    </div>
+<h2>Extrato de <%= current_user.name %></h2>
+<div class="row">
+  <div class="col-md-3">
+    <%= render "shared/user_card", user: current_user %>
   </div>
-</div>
+  <div class="col-md-9" align="center">
+    <% balance = 0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Operação</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bids.each do |bid| %>
+          <% if current_user == bid.buyer %>
+            <% balance -= bid.price %>
+            <tr class="danger">
+              <td>#INCLUIR NOME OPERAÇÃO#</td>
+              <td>- (<%= number_to_currency(bid.price, :unit => "R$ ", :separator => ",", :delimiter => ".") %>)</td>
+            </tr>
+          <% else %>
+            <% balance += bid.price %>
+            <tr class="success">
+              <td>#INCLUIR NOME OPERAÇÃO#</td>
+              <td><%= number_to_currency(bid.price, :unit => "R$ ", :separator => ",", :delimiter => ".") %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <p>Seu saldo atual é: <%= number_to_currency(balance, :unit => "R$ ", :separator => ",", :delimiter => ".") %></p>
+    <p>Posição até o momento. <%= Time.now.strftime("%d/%m/%Y %H:%M:%S") %></p>
+  </div>
 
+
+
+</div>
