@@ -9,14 +9,21 @@
           <%= render 'shared/product_info' %>
         </div>
         <div class="col-md-4">
+      <% if current_user != @security.user %>
           <%= render 'shared/bid_card' %>
+      <% else %>
+      <% end %>
         </div>
       </div>
       <h1> </h1>
       <%= render 'shared/fgc' %>
     </div>
     <div class="col-md-3">
-      <%= render 'shared/calculations_card' %>
+      <% if current_user != @security.user %>
+        <%= render 'shared/calculations_card' %>
+      <% else %>
+        <%#= render 'shared/security_card' %>
+      <% end %>
     </div>
   </div>
 </div>

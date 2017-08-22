@@ -35,15 +35,43 @@
         </tr>
         <tr>
           <td>PU ofertado:</td>
-          <td><%= number_to_currency(@bid.price.to_f / @security.quantity) %></td>
+          <td>
+            <% if @bid.price.nil? %>
+              <%= number_to_currency(price_calc.to_f / @security.quantity, precision:2) %>
+            <% else %>
+              <%= number_to_currency(@bid.price.to_f / @security.quantity, precision:2) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>Valor ofertado:</td>
-          <td><%= number_to_currency(@bid.price) %></td>
+          <td>
+            <% if @bid.price.nil? %>
+              <%= number_to_currency(price_calc.to_f, precision:2) %>
+            <% else %>
+              <%= number_to_currency(@bid.price.to_f, precision:2) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
-          <td>Quantidade:</td>
-          <td><%= @security.quantity %></td>
+          <td>IPCA:</td>
+          <td><%= number_to_percentage(ipca, precision:2) %></td>
+        </tr>
+        <tr>
+          <td>IGPM:</td>
+          <td><%= number_to_percentage(igpm, precision:2) %></td>
+        </tr>
+        <tr>
+          <td>i:</td>
+          <td><%= number_to_percentage(((1+@security.rate)**(1.to_f/360)-1)*100, precision:4) %></td>
+        </tr>
+        <tr>
+          <td>Comissão:</td>
+          <td><%#= number_to_percentage(((1+@bid.rate)**(1.to_f/360)-1)*100, precision:4) %></td>
+        </tr>
+        <tr>
+          <td>Valor final (oferta + comissão):</td>
+          <td><%#= @bid.comission %></td>
         </tr>
       </tbody>
     </table>

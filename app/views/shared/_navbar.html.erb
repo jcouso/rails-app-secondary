@@ -13,7 +13,7 @@
     <!-- Links when logged in -->
     <div class="text-right">
       <p class="user-name">
-        Bem-vindo <%= current_user.name %>. Seu saldo é <span class="user-account-ballance">R$ 69.696.969,69</span>
+        Bem-vindo <%= current_user.name %>. Seu saldo é <span class="user-account-ballance"><%= number_to_currency(current_user.calc_balance, :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
         <br>
         <span class="legal-info">Posição até o momento. <%= Time.now.strftime("%d/%m/%Y %H:%M:%S") %></span>
       </p>

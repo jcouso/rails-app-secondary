@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :bids
+  has_many :bids, foreign_key: :buyer_id
   has_many :securities
 
   #validates :name, length: { minimum: 2 }
@@ -21,4 +21,20 @@ class User < ApplicationRecord
   #validates :account_number, uniqueness: true
   #validates :expedition_date, presence: true, date: true
 
+  def my_bids
+    self.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+  end
+
+  def calc_balance
+    balance = self.balance
+    my_bids.each do |bid|
+      if self == bid.buyer
+        operation = bid.price + bid.comission
+        balance -= operation
+      else
+        balance += bid.price
+      end
+    end
+    balance
+  end
 end
