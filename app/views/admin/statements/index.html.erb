@@ -1,0 +1,25 @@
+<div class="container">
+<h1>Extrato de <%= current_user.name %></h1>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render "shared/user_card", user: current_user %>
+    </div>
+
+    <div class="cln-md-9">
+      <% balance = 0 %>
+      <% @bids.each do |bid| %>
+        <% if current_user == bid.buyer %>
+          <% balance -= bid.price %>
+          <p>- <%= bid.price %></p>
+        <% else %>
+          <% balance += bid.price %>
+          <p><%= bid.price %></p>
+        <% end %>
+      <% end %>
+
+      <p>Seu saldo é: <%= balance %></p>
+      <p>Posição até o momento. <%= Time.now.strftime("%d/%m/%Y %H:%M:%S") %></p>
+    </div>
+  </div>
+</div>
+
