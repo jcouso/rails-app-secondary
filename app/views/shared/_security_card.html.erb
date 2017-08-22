@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <td>Taxa:</td>
-          <td><%= (security.rate).round(2) %>%</td>
+          <td><%= number_to_percentage(security.rate.to_f*100, precision:2) %> <%= security.indexer %></td>
         </tr>
         <tr>
           <td>Quantidade:</td>

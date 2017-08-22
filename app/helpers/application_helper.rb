@@ -54,8 +54,7 @@ module ApplicationHelper
   end
 
   def price_calc
-    if @bid.price.empty?
-    end
+    hp12c
   end
 
   def rate_calc
@@ -63,15 +62,16 @@ module ApplicationHelper
   end
 
   def hp12c
-    n = time_to_maturity.to_f * (360/365)
+    n = time_to_maturity * (360.to_f/365)
     pv = @security.value
     i_dia = ((hp12c_interest.to_f / 100)+1)**(1/360)
     fv = (pv * ((i_dia)**n))
+    fv
   end
 
   def hp12c_interest
     if @security.indexer == "PRE"
-      @security.rate
+      @security.rate.to_f
     elsif @security.indexer == "CDI"
       @security.rate.to_f * cdi
     elsif @security.indexer == "IPC-A+"
