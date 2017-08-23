@@ -25,12 +25,12 @@
                 <%= f.input :quantity, label: 'Quantidade' %>
               </div>
               <div class="col-sm-8">
-                <%= f.input :unit_price, label: 'Preço unitário de compra (R$)', as: 'string', input_html: {class: "money"} %>
+                <%= f.input :unit_price, label: 'Preço unitário de compra (R$)' %>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <%= f.input :rate, label: 'Taxa (%)', as: 'string', input_html: {class: "percent"} %>
+                <%= f.input :rate, label: 'Taxa (%)' %>
               </div>
               <div class="col-sm-6">
                 <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
