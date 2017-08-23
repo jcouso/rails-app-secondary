@@ -1,6 +1,6 @@
 <p>Data de Vencimento: <%= @security.maturity.strftime("%d/%m/%Y") %></p>
 <p>Em negociação no Secondary até: <%= @security.date_limit.strftime("%d/%m/%Y") %></p>
-<p>Taxa: <%= (@security.rate*100.00).round(2) %>%</p>
+<p>Taxa: <%= number_to_percentage(@security.rate.to_f*100, precision:2) %> <%= @security.indexer %></p>
 <p>PU (Preço unitário): <%= number_to_currency(@security.unit_price) %></p>
 <p>Quantidade: <%= @security.quantity %></p>
 <p>Valor Total: <%= number_to_currency(@security.value) %></p>
