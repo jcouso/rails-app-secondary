@@ -10,31 +10,35 @@
     <table class="table table-striped">
       <tbody>
         <tr>
+          <td>Data de Emissão:</td>
+          <td><%= security.issue_date.strftime("%d/%m/%Y") %></td>
+        </tr>
+        <tr>
           <td>Data de Vencimento:</td>
-          <td><%= security.maturity %></td>
+          <td><%= security.maturity.strftime("%d/%m/%Y") %></td>
         </tr>
         <tr>
           <td>Em negociação até:</td>
-          <td><%= security.date_limit %></td>
+          <td><%= security.date_limit.strftime("%d/%m/%Y") %></td>
         </tr>
         <tr>
           <td>Taxa:</td>
           <td><%= number_to_percentage(security.rate.to_f*100, precision:2) %> <%= security.indexer %></td>
         </tr>
         <tr>
+          <td>Valor de Mercado:</td>
+          <td><%= number_to_currency(security.current_value) %></td>
+        </tr>
+        <tr>
           <td>Quantidade:</td>
           <td><%= security.quantity %></td>
         </tr>
         <tr>
-          <td>PU</td>
+          <td>PU:</td>
           <td><%= number_to_currency(security.unit_price) %></td>
         </tr>
         <tr>
-          <td>Valor Inicial</td>
-          <td><%= number_to_currency(security.value) %></td>
-        </tr>
-        <tr>
-          <td>Preço de Venda</td>
+          <td>Preço mínimo de Venda:</td>
           <td><%= number_to_currency(security.price) %></td>
         </tr>
       </tbody>
