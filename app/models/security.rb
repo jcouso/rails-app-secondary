@@ -5,10 +5,10 @@ class Security < ApplicationRecord
   has_many :bids, dependent: :destroy
   #validates :mode, presence: true
   #validates :code, presence: true
-  #validates :maturity, presence: true
+  #validates :maturity, presence: true, date: true
   #validates :price, presence: true, numericality: true
   #validates :date_limit, presence: true, date: true
-  #validates :quantity, presence: true, numericality: true
+  #validates :quantity, presence: true, numericality: { only_integer: true }
   #validates :rate, presence: true, numericality: true
   #validates :indexer, presence: true
   #validates :unit_price, presence: true, numericality: true
@@ -16,6 +16,7 @@ class Security < ApplicationRecord
   validate :maturity_cannot_be_in_the_past, on: :create
   validate :date_limit_cannot_be_in_the_past, on: :create
   validate :validate_date_limit_before_maturity, on: :create
+  validate :maturity_cannot_be_before_issue_date
   mount_uploader :file, FileUploader
 
   def value
