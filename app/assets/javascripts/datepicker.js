@@ -4,5 +4,6 @@ $(document).ready(function() {
       language: "pt-BR",
       todayHighlight: true,
       autoclose: true,
+      orientation: "bottom auto"
   });
 });

@@ -21,13 +21,20 @@ class User < ApplicationRecord
   #validates :account_number, uniqueness: true
   #validates :expedition_date, presence: true, date: true
 
-  def my_bids
-    self.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+  def my_bids_closed
+    all = self.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+    all << Bid.where(buyer: self, status: true).to_a
+    all.flatten!
+  end
+
+
+  def my_bids_all
+    self.securities.map{|s| s.bids }.flatten
   end
 
   def calc_balance
     balance = self.balance
-    my_bids.each do |bid|
+    my_bids_closed.each do |bid|
       if self == bid.buyer
         operation = bid.price + bid.comission
         balance -= operation
@@ -37,4 +44,5 @@ class User < ApplicationRecord
     end
     balance
   end
+
 end

@@ -1,83 +1,3 @@
-<style>
-.offer {
-background-color: #b3b3b3;
-color: #666666;
-padding: 10px;
-margin: 15px 0;
-box-shadow: 3px 3px 5px #cccccc;
-border-radius: 3px;
-border: 1px solid #b3b3b3;
-border-radius: 3px;
-position:relative;
-transition: 0.2s ease;
-bottom:0;
-display:flex;
-justify-content: space-between;
-align-items: center;
-}
-.offer:hover {
-  bottom: 1px;
-  box-shadow: 3px 3px 5px #cccccc;
-}
-
-
-
-.offer p {
-  font-size:15px;
-  color:black;
-}
-
-.offer h3 {
-  font-size: 35px;
-}
-.bid-title {
-font-size: 30px;
-  font-weight: 700;
-  color: #7f7f7f;
-
-}
-
-
-#best {
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 3px 3px 7px #cccccc;
-  border-top: 4px solid #324E7B;
-}
-
-#best:hover {
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 5px 5px 10px #cccccc;
-}
-
-#best i {
-  position:absolute;
-
-  top:-15px;
-  left:-13px;
-  color: #ffff66;
-  font-size: 30px;
-  text-shadow: 0px 0px 1px #000;
- }
-
- #controls {
-  display:flex;
- }
-
- #controls .btn {
-  margin:5px;
- }
-
- .links {
-  font-size: 12px;
- }
-
- .btn {
-height: 40px !important;
-}
-
-</style>
 <br>
 <%= link_to "voltar", :back, class: "links" %>
 <div class="row">
@@ -92,6 +12,8 @@ height: 40px !important;
               <i class="fa fa-star" aria-hidden="true"></i>
               <ul>
                 <li>Lance Ganhador: <%= number_to_currency(@bid.first.price) %></li>
+                <%= @bid.first.buyer.email %>
+                <%= @security.user.email %>
               </ul>
             </div>
         </div>
@@ -108,7 +30,8 @@ height: 40px !important;
               <h3><%= number_to_currency(best_offer.price)%> </h3>
               <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
               <p >Taxa sobre preço base: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
-              <%= %>
+              <%= best_offer.buyer.email %>
+              <%= @security.user.email%>
               </div>
               <% if current_user == @security.user %>
                 <div id="controls">
@@ -124,6 +47,8 @@ height: 40px !important;
           <div class="offer">
             <div class="offer-info">
               <p><%= number_to_currency(bid.price)%> - Lance ofrecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre base: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
+              <%= bid.buyer.email %>
+              <%= @security.user.email%>
             </div>
           </div>
         <% end %>
