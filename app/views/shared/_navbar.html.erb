@@ -31,19 +31,8 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <i class="btn btn-sm btn-navbar dropdown-toggle fa fa-envelope-o" data-toggle="dropdown"></i>
-
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-envelope"></i> <%= t(".profile", default: "Você recebeu uma oferta para o título XYZ") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-envelope"></i> <%= t(".profile", default: "Sua proposta de compra foi aceita") %>
-              <% end %>
-            </li>
-
+            <%= render "shared/notifications", bids: @notifications %>
           </ul>
         </div>
       </div>
