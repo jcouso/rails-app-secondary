@@ -44,7 +44,7 @@ before_action :set_security, only: [:edit, :update, :destroy, :show]
   end
 
   def security_params
-    params.require(:security).permit(:mode, :security_type_id, :issuer_id, :code, :maturity, :price, :date_limit, :status, :quantity, :rate, :indexer, :unit_price)
+    params.require(:security).permit(:mode, :security_type_id, :issuer_id, :code, :issue_date, :maturity, :price, :date_limit, :status, :quantity, :rate, :indexer, :unit_price)
   end
 
 end

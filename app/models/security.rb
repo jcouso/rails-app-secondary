@@ -2,7 +2,7 @@ class Security < ApplicationRecord
   belongs_to :user
   belongs_to :issuer
   belongs_to :security_type
-  has_many :bids
+  has_many :bids, dependent: :destroy
   #validates :mode, presence: true
   #validates :code, presence: true
   #validates :maturity, presence: true
