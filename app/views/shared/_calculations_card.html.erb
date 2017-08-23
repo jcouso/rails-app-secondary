@@ -34,7 +34,7 @@
           <td><%= number_to_percentage(net_profitability_cdi.to_f * 100, precision:2) %></td>
         </tr>
         <tr>
-          <td>PU equivalente:</td>
+          <td>PU da oferta:</td>
           <td>
             <% if @bid.price.nil? %>
               <%= number_to_currency(price_calc.to_f / @security.quantity, precision:2) %>
@@ -44,7 +44,7 @@
           </td>
         </tr>
         <tr>
-          <td>Valor equivalente:</td>
+          <td>Valor da oferta:</td>
           <td>
             <%= number_to_currency(price_calc.to_f, precision:2) %>
           </td>
