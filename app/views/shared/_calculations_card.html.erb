@@ -11,7 +11,7 @@
       <tbody>
         <tr>
           <td>Prazo até Vencimento:</td>
-          <td><%= time_to_maturity %> dias</td>
+          <td><%= @security.time_to_maturity %> dias</td>
         </tr>
         <tr>
           <td>Rentabilidade Bruta:</td>
@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td>CDI hoje:</td>
-          <td><%= number_to_percentage(cdi.to_f, precision:2) %></td>
+          <td><%= number_to_percentage(@security.cdi, precision:2) %></td>
         </tr>
         <tr>
           <td>Rentabilidade Bruta (%CDI):</td>
@@ -34,7 +34,7 @@
           <td><%= number_to_percentage(net_profitability_cdi.to_f * 100, precision:2) %></td>
         </tr>
         <tr>
-          <td>PU ofertado:</td>
+          <td>PU equivalente:</td>
           <td>
             <% if @bid.price.nil? %>
               <%= number_to_currency(price_calc.to_f / @security.quantity, precision:2) %>
@@ -44,22 +44,18 @@
           </td>
         </tr>
         <tr>
-          <td>Valor ofertado:</td>
+          <td>Valor equivalente:</td>
           <td>
-            <% if @bid.price.nil? %>
-              <%= number_to_currency(price_calc.to_f, precision:2) %>
-            <% else %>
-              <%= number_to_currency(@bid.price.to_f, precision:2) %>
-            <% end %>
+            <%= number_to_currency(price_calc.to_f, precision:2) %>
           </td>
         </tr>
         <tr>
           <td>IPCA:</td>
-          <td><%= number_to_percentage(ipca, precision:2) %></td>
+          <td><%= number_to_percentage(@security.ipca, precision:2) %></td>
         </tr>
         <tr>
           <td>IGPM:</td>
-          <td><%= number_to_percentage(igpm, precision:2) %></td>
+          <td><%= number_to_percentage(@security.igpm, precision:2) %></td>
         </tr>
         <tr>
           <td>i:</td>
