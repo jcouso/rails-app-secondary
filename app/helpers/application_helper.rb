@@ -4,11 +4,11 @@ module ApplicationHelper
     if @bid.indexer == "PRE"
       @bid.rate.to_f
     elsif @bid.indexer == "CDI"
-      @bid.rate.to_f * (cdi_12m.to_f/100)
+      @bid.rate.to_f * (@security.cdi.to_f/100)
     elsif @bid.indexer == "IPC-A+"
-      @bid.rate.to_f + ipca
+      @bid.rate.to_f + @security.ipca
     elsif @bid.indexer == "IGP-M+"
-      @bid.rate.to_f + igpm
+      @bid.rate.to_f + @security.igpm
     end
   end
 
@@ -20,7 +20,7 @@ module ApplicationHelper
     elsif @security.time_to_maturity <= 720
       (gross_profitability.to_f * 0.825)
     else
-      (@bid.rate.to_f * 0.85)
+      (gross_profitability.to_f * 0.85)
     end
   end
 
@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def price_calc
     n = (@security.time_to_maturity.to_f) * (360.to_f/365)
-    i_dia = ((@bid.rate.to_f / 100)+1)**(1.to_f/360)
+    i_dia = ((gross_profitability.to_f / 100)+1)**(1.to_f/360)
     @bid.price = (hp12c_fv.to_f / ((i_dia.to_f)**(n)))
     @bid.price
   end
