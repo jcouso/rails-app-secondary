@@ -8,27 +8,41 @@
         <%= simple_form_for([:admin, @security]) do |f| %>
 
           <div class="form-input form-group-sm">
-            <%= f.input :mode, label: 'Como você quer vender seu título?', collection: ["Leilão", "Preço fixo", "Negociação aberta"] %>
+            <!-- %= f.input :mode, label: 'Como você quer vender seu título?', collection: ["Leilão", "Preço fixo", "Negociação aberta"] %> -->
             <%= f.association :security_type, label: 'Tipo de título' %>
             <%= f.association :issuer, label: 'Emissor' %>
-            <%= f.input :code, label: 'Código do título' %>
-            <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
-            <%= f.input :price, label: 'Preço de venda' %>
-            <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
+            <%= f.input :code, label: 'Código do título (ex: LCI 98E00059531)' %>
             <div class="row">
               <div class="col-sm-6">
-                <%= f.input :quantity, label: 'Quantidade' %>
+                <%= f.input :issue_date, as: :string, input_html: {class: "datepicker"}, label: 'Data de emissão' %>
               </div>
               <div class="col-sm-6">
-                <%= f.input :unit_price, label: 'Preço unitário de compra', as: 'string' %>
+                <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <%= f.input :quantity, label: 'Quantidade' %>
+              </div>
+              <div class="col-sm-8">
+                <%= f.input :unit_price, label: 'Preço unitário de compra (R$)', as: 'string' %>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <%= f.input :rate, label: 'Taxa', as: 'string', input_html: {class: "percent"} %>
+                <%= f.input :rate, label: 'Taxa (%)', as: 'string', input_html: {class: "percent"} %>
               </div>
               <div class="col-sm-6">
                 <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
+              </div>
+            </div>
+            <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= f.input :current_value, label: 'Valor atual (R$)', readonly: true %>
+              </div>
+              <div class="col-sm-6">
+                <%= f.input :price, label: 'Preço de venda (R$)' %>
               </div>
             </div>
             <div class="form-input form-group-sm">
