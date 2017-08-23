@@ -5,7 +5,7 @@
   <div class="description">
     <div class="security-card-header">
       <%= image_tag security.issuer.name.downcase+"-logo.png", height: "40" , id: "logo" %>
-      <p><strong>Titulo <%= security.issuer.name %></strong></p>
+      <p><strong><%= security.security_type.name %> - <%= security.issuer.name %></strong></p>
     </div>
     <table class="table table-striped">
       <tbody>
@@ -23,23 +23,29 @@
         </tr>
         <tr>
           <td>Taxa:</td>
-          <td><%= number_to_percentage(security.rate.to_f*100, precision:2) %> <%= security.indexer %></td>
-        </tr>
-        <tr>
-          <td>Valor atual:</td>
-          <td><%= number_to_currency(security.current_value) %></td>
+          <td><%= number_to_percentage(security.rate  , precision:2) %> <%= security.indexer %></td>
         </tr>
         <tr>
           <td>Quantidade:</td>
           <td><%= security.quantity %></td>
         </tr>
         <tr>
-          <td>PU:</td>
+          <td>PU atual:</td>
           <td><%= number_to_currency(security.current_value/security.quantity) %></td>
         </tr>
         <tr>
+          <td>Valor atual:</td>
+          <td><%= number_to_currency(security.current_value) %></td>
+        </tr>
+        <tr>
           <td>Preço mínimo de Venda:</td>
-          <td><%= number_to_currency(security.price) %></td>
+          <td>
+          <% if security.bids.empty? %>
+            <%= number_to_currency(security.price) %>
+          <% else %>
+            <%= number_to_currency(security.bids.first.price) %>
+          <% end %>
+          </td>
         </tr>
       </tbody>
     </table>

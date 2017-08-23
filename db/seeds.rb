@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-SECURITY_TYPES = ["CDB", "CRA", "CRI", "DB", "DPGE", "FIDC", "LC", "LCA", "LCI", "LF", "LFSUB"]
+SECURITY_TYPES = ["CDB", "CRA", "CRI", "DEB", "DPGE", "FIDC", "LC", "LCA", "LCI", "LF", "LFSUB"]
 
 INDEXERS = ["CDI", "PRE", "IPC-A+", "IGP-M+"]
 
@@ -61,7 +61,8 @@ Security.all.each do |security|
                seller: security.user,
                security: security,
                status: false,
-               price: security.quantity*security.unit_price*rand(0.80..1.20))
+               price: security.quantity*security.unit_price*rand(0.80..1.20),
+               indexer: INDEXERS.sample)
   end
 end
 
