@@ -37,13 +37,9 @@
               </div>
             </div>
             <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
-            <div class="row">
-              <div class="col-sm-6">
-                <%= f.input :current_value, label: 'Valor atual (R$)', readonly: true %>
-              </div>
-              <div class="col-sm-6">
-                <%= f.input :price, label: 'Preço de venda (R$)' %>
-              </div>
+            <%= f.input :price, label: 'Preço de venda (R$)' %>
+            <div id="current-value">
+              <p>Valor atual de seu título</p>
             </div>
             <div class="form-input form-group-sm">
               <%= f.input :file, label: 'Anexar Nota de negociação' %>
