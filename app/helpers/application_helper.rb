@@ -1,16 +1,24 @@
 module ApplicationHelper
 
   def gross_profitability
-    (@bid.rate.to_f)
+    if @bid.indexer == "PRE"
+      @bid.rate.to_f
+    elsif @bid.indexer == "CDI"
+      @bid.rate.to_f * (cdi_12m.to_f/100)
+    elsif @bid.indexer == "IPC-A+"
+      @bid.rate.to_f + ipca
+    elsif @bid.indexer == "IGP-M+"
+      @bid.rate.to_f + igpm
+    end
   end
 
   def net_profitability
     if @security.time_to_maturity <= 180
-      (@bid.rate.to_f * 0.775)
+      (gross_profitability.to_f * 0.775)
     elsif @security.time_to_maturity <= 360
-      (@bid.rate.to_f * 0.8)
+      (gross_profitability.to_f * 0.8)
     elsif @security.time_to_maturity <= 720
-      (@bid.rate.to_f * 0.825)
+      (gross_profitability.to_f * 0.825)
     else
       (@bid.rate.to_f * 0.85)
     end
