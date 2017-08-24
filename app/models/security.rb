@@ -82,7 +82,7 @@ class Security < ApplicationRecord
 
   private
 
-    def maturity_cannot_be_in_the_past
+  def maturity_cannot_be_in_the_past
     if maturity.present? && maturity < Date.today
       errors.add(:maturity, "Título não pode estar vencido")
     end
