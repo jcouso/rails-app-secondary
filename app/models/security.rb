@@ -3,20 +3,21 @@ class Security < ApplicationRecord
   belongs_to :issuer
   belongs_to :security_type
   has_many :bids, dependent: :destroy
-  #validates :mode, presence: true
-  #validates :code, presence: true
-  #validates :maturity, presence: true, date: true
-  #validates :price, presence: true, numericality: true
-  #validates :date_limit, presence: true, date: true
-  #validates :quantity, presence: true, numericality: { only_integer: true }
-  #validates :rate, presence: true, numericality: true
-  #validates :indexer, presence: true
-  #validates :unit_price, presence: true, numericality: true
-  #validates :issue_date, presence: true, date: true
+  # validates :mode, presence: true
+  validates :code, presence: true
+  validates :maturity, presence: true, date: true
+  validates :price, presence: true, numericality: true
+  validates :date_limit, presence: true, date: true
+  validates :quantity, presence: true, numericality: { only_integer: true }
+  validates :rate, presence: true, numericality: true
+  validates :indexer, presence: true
+  validates :unit_price, presence: true, numericality: true
+  validates :issue_date, presence: true, date: true
   validate :maturity_cannot_be_in_the_past, on: :create
   validate :date_limit_cannot_be_in_the_past, on: :create
   validate :validate_date_limit_before_maturity, on: :create
   validate :maturity_cannot_be_before_issue_date
+  validate :issue_date_cannot_be_in_future
   mount_uploader :file, FileUploader
 
   def value
@@ -58,6 +59,12 @@ class Security < ApplicationRecord
   def maturity_cannot_be_before_issue_date
     if maturity < issue_date
       errors.add(:maturity, "A data de vencimento tem que ser depois da data de emissão")
+    end
+  end
+
+  def issue_date_cannot_be_in_future
+    if issue_date.present? && issue_date > Date.today
+      errors.add(:issue_date, "A data de emissão não pode ser uma data fútura")
     end
   end
 end
