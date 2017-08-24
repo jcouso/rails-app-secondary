@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/sysadmin', as: 'rails_admin'
   devise_for :users
   root to: 'securities#index'
 
