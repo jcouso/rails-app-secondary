@@ -25,7 +25,8 @@
     </div>
     <div class="col-md-3">
       <% if current_user != @security.user %>
-        <%= render 'shared/calculations_card' %>
+        <%#= render 'shared/calculations_card' %>
+        <div class="security-card"></div>
       <% else %>
         <%#= render 'shared/security_card' %>
       <% end %>

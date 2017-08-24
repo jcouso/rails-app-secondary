@@ -48,13 +48,44 @@ class SecuritiesController < ApplicationController
 
     if params[:bid_calculation][:mode] == "price"
       @bid.price = params[:bid_calculation][:price]
+      n = (@security.time_to_maturity.to_f) * (360.to_f/365)
+      pv = @bid.price
+      @bid.indexer = @security.indexer
+      @bid.rate = ((((hp12c_fv.to_f / pv)**(1.to_f/n))**(360))-1)*100
+
+      @calculation_price = true
     else
       @bid.rate = params[:bid_calculation][:rate]
       @bid.indexer = params[:bid_calculation][:indexer]
+      n = (@security.time_to_maturity.to_f) * (360.to_f/365)
+      i_dia = ((gross_profitability.to_f / 100)+1)**(1.to_f/360)
+      @bid.price = (hp12c_fv.to_f / ((i_dia.to_f)**(n)))
+      @calculation_price = false
     end
   end
 
   private
+
+  def hp12c_fv
+    n = (@security.time_to_maturity.to_f + @security.time_elapsed.to_f) * (360.to_f/365)
+    pv = @security.value
+    i_dia = ((@security.hp12c_interest.to_f / 100)+1)**(1.to_f/360)
+    fv = pv.to_f * ((i_dia.to_f)**(n.to_f))
+    fv
+  end
+
+    def gross_profitability
+    indexer = @bid.indexer || @security.indexer
+    if indexer == "PRE"
+      @bid.rate.to_f
+    elsif indexer == "CDI"
+      @bid.rate.to_f * (@security.cdi.to_f/100)
+    elsif indexer == "IPC-A+"
+      @bid.rate.to_f + @security.ipca
+    elsif indexer == "IGP-M+"
+      @bid.rate.to_f + @security.igpm
+    end
+  end
 
     def set_security
         @security = Security.find(params[:id])

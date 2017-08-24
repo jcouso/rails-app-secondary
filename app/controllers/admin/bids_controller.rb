@@ -7,8 +7,15 @@ class Admin::BidsController < ApplicationController
 
   def create
     @security = Security.find(params[:security_id])
-    @bid = Bid.create_attributes
+    @bid = Bid.new(bid_params)
     @bid.security = @security
+    @bid.buyer = current_user
+    @bid.seller = @security.user
+    if @bid.save
+      redirect_to admin_security_bids_path(@security)
+    else
+      render :show
+    end
   end
 
   def update
@@ -26,7 +33,6 @@ class Admin::BidsController < ApplicationController
   end
 
   def destroy
-
       @security  = Security.find(params[:security_id])
       @bid = @security.bids.find(params[:id])
     if current_user == @security.user
@@ -37,6 +43,12 @@ class Admin::BidsController < ApplicationController
 
   def mybids
     @securities = Bid.where(buyer: current_user).map(&:security).uniq
+  end
+
+  private
+
+  def bid_params
+    params.require(:bid).permit(:price, :rate, :indexer)
   end
 
 end
