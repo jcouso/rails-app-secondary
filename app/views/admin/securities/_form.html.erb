@@ -48,11 +48,13 @@ abbr[title="required"] {
             <%= f.input :date_limit, as: :string, input_html: {class: "datepicker"}, label: 'Aberto para negociação até' %>
             <div class="row">
               <div class="col-sm-6" id="current-value">
-                <%#= f.input :current_value, label: 'Valor atual (R$)', readonly: true %>
+                <label for="security_current_value">Valor atual</label>
+                <input class="form-control numeric decimal required readonly" readonly="readonly" type="number" step="any" name="security[current_value]" id="security_current_value" value="0">
               </div>
               <div class="col-sm-6">
                 <%= f.input :price, label: 'Preço de venda (R$)' %>
               </div>
+            </div>
             <div class="form-input form-group-sm">
               <%= f.input :file, label: 'Anexar Nota de negociação' %>
               <%= f.input :file_cache, as: :hidden %>
@@ -70,20 +72,19 @@ abbr[title="required"] {
   </div>
 </div>
 
-
 <% content_for :js do %>
   <script type="text/javascript">
     $("#real-money").maskMoney();
     $('#taxa-money').maskMoney();
     $("#new_security").submit(function(ev) {
-        console.log("Oi")
         ev.preventDefault(); // to stop the form from submitting
         /* Validations go here */
+        var num = $("#real-money").maskMoney('unmasked')
+        var num1 = $("#taxa-money").maskMoney('unmasked')
         $("#real-money").attr("type", "number");
         $("#taxa-money").attr("type", "number");
-        $("#real-money").removeAttr("data-prefix");
-        $("#taxa-money").removeAttr("data-prefix");
-
+        $("#real-money").val(num[0]);
+        $("#taxa-money").val(num1[0]);
         this.submit(); // If all the validations succeeded
     });
    </script>

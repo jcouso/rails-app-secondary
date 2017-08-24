@@ -24,6 +24,9 @@ class Security < ApplicationRecord
     quantity * unit_price
   end
 
+  def time_elapsed
+    (Time.current.to_date - issue_date).to_i
+  end
 
   def current_value
     n = time_elapsed * (360.to_f/365)
@@ -37,9 +40,6 @@ class Security < ApplicationRecord
     (maturity - Time.current.to_date).to_i
   end
 
-  def time_elapsed
-    (Time.current.to_date - issue_date).to_i
-  end
 
   def cdi
     # site_cetip = Nokogiri::HTML(open("https://www.cetip.com.br/").read)
