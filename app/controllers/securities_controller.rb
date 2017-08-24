@@ -43,6 +43,13 @@ class SecuritiesController < ApplicationController
     end
   end
 
+  def ajax_calculate
+    sec = Security.new(params.permit(:issue_date, :maturity, :quantity, :unit_price, :rate, :indexer))
+    respond_to do |format|
+      format.json { render json: sec.current_value }
+    end
+  end
+
   def calculate
     @bid = Bid.new
 
