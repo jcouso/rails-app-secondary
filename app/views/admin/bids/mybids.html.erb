@@ -7,15 +7,20 @@
 </style>
 
 <div class="container">
-<<<<<<< HEAD
+
   <div class="title-minha-ofertas">
-    <h2><strong>Minhas ofertas enviadas</strong></h2>
+    <h2>Minhas ofertas enviadas</h2>
+      <% if @securities.empty? %>
+        <h3> Você não fez nenhuma oferta ainda </h1>
+        <%= link_to "Veja os títulos disponíveis", search_securities_path %>
+      <% else %>
+        <% @securities.each do |security| %>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <%=render 'shared/security_card', security: security, link_path:  admin_security_bids_path(security) %>
+          </div>
+      <% end %>
   </div>
-  <% @securities.each do |security| %>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-      <%=render 'shared/security_card', security: security, link_path:  admin_security_bids_path(security) %>
-    </div>
-=======
+
   <h2>Minhas ofertas enviadas</h2>
   <% if @securities.empty? %>
     <h3> Você não fez nenhuma oferta ainda </h1>
@@ -26,7 +31,7 @@
           <%=render 'shared/security_card', security: security, link_path:  admin_security_bids_path(security) %>
       </div>
     <% end %>
->>>>>>> 14b922348a1e34738fab90f1e8b1af95b612613e
+
   <% end %>
 </div>
 
