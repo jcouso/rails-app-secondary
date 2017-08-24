@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-9">
     <% if @bids.empty? %>
-      <h1> Seja o primeiro ate fazer um lance </h1>
+      <h1> Seja o primeiro a fazer um lance </h1>
     <% else %>
       <% if !@security.status.nil? %>
         <div class="bid-title">
@@ -28,8 +28,8 @@
 
               <% rate = number_to_percentage(((best_offer.price-@security.value)/@security.value)*100, precision: 2) %>
               <h3><%= number_to_currency(best_offer.price)%> </h3>
-              <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
-              <p >Taxa sobre preço base: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
+              <p>Lance oferecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+              <p >Taxa sobre valor atual: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
               </div>
               <% if current_user == @security.user %>
                 <div id="controls">
@@ -44,7 +44,7 @@
         <% bids.to_a.each do |bid| %>
           <div class="offer">
             <div class="offer-info">
-              <p><%= number_to_currency(bid.price)%> - Lance ofrecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre base: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
+              <p><%= number_to_currency(bid.price)%> - Lance oferecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre valor atual: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
             </div>
           </div>
         <% end %>
