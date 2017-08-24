@@ -6,11 +6,11 @@
       <div class="price-mode">
         <%= f.input :price, as: :float, label: 'Valor de oferta', autofocus: true, input_html: { min: @security.price.round(2), value: @security.price.round(2), autofocus: true } %>
       </div>
-      <div class="row rate-mode hidden">
-        <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-6 rate-mode hidden">
         <%= f.input :rate, label: 'Taxa de oferta', autofocus: true %>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 indexer-mode hidden">
         <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
         </div>
       </div>

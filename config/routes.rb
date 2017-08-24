@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/sysadmin', as: 'rails_admin'
   devise_for :users
   root to: 'securities#index'
 
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
 
     collection do
       get 'search'
+      get 'ajax_calculate'
     end
   end
 
