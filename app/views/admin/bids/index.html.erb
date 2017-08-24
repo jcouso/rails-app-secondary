@@ -30,7 +30,7 @@
               <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
               <p >Taxa sobre valor atual: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
               <% if best_offer.buyer != current_user && @security.user != current_user%>
-                <p><strong> Seu lançe não é o maior, faça um lance maior para ganher este arremate! </strong></p>
+                <p><strong> Seu lance não é o maior, faça um lance maior para ganher este arremate! </strong></p>
               <% end %>
 
               </div>
