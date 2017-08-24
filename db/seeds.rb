@@ -21,6 +21,17 @@ ISSUERS.each do |issuer|
   Issuer.create(name:issuer)
 end
 
+u = User.create(email: "admin@test.com",
+              password: "123123",
+              name: Faker::Name.name,
+              cpf: Faker::Number.number(11),
+              document_number: Faker::Number.number(7),
+              birthdate: Faker::Date.birthday,
+              mother_name:Faker::Name.name,
+              father_name:Faker::Name.name,
+              admin: true
+              )
+
 10.times do
   u = User.create(email: Faker::Internet.email,
               password: "123123",
