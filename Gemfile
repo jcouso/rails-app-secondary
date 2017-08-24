@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'date_validator'
 gem 'faker'
 gem 'cloudinary'
@@ -26,8 +27,10 @@ gem 'rails-i18n', '5.0.3'
 gem 'jquery-inputmask-rails'
 gem 'animate-rails'
 gem 'carrierwave', '~> 0.11.2'
+gem 'maskmoney-rails', '~> 3.0', '>= 3.0.2.0'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+
 
 group :development, :test do
   gem 'pry-byebug'
