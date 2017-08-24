@@ -1,5 +1,5 @@
 <br>
-<%= link_to "voltar", admin_securities_path, class: "links" %>
+<%= link_to "voltar", :back, class: "links" %>
 <div class="row">
   <div class="col-md-9">
     <% if @bids.empty? %>
@@ -12,6 +12,8 @@
               <i class="fa fa-star" aria-hidden="true"></i>
               <ul>
                 <li>Lance Ganhador: <%= number_to_currency(@bid.first.price) %></li>
+                <%= @bid.first.buyer.email %>
+                <%= @security.user.email %>
               </ul>
             </div>
         </div>
@@ -28,7 +30,6 @@
               <h3><%= number_to_currency(best_offer.price)%> </h3>
               <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
               <p >Taxa sobre preço base: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
-              <%= %>
               </div>
               <% if current_user == @security.user %>
                 <div id="controls">

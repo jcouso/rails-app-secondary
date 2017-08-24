@@ -1,7 +1,7 @@
 <p>Data de Emissão: <%= @security.issue_date.strftime("%d/%m/%Y") %></p>
 <p>Data de Vencimento: <%= @security.maturity.strftime("%d/%m/%Y") %></p>
 <p>Em negociação no Secondary até: <%= @security.date_limit.strftime("%d/%m/%Y") %></p>
-<p>Taxa: <%= number_to_percentage(@security.rate.to_f*100, precision:2) %> <%= @security.indexer %></p>
-<p>PU (Preço unitário): <%= number_to_currency(@security.unit_price) %></p>
+<p>Taxa: <%= number_to_percentage(@security.rate, precision:2) %> <%= @security.indexer %></p>
 <p>Quantidade: <%= @security.quantity %></p>
-<p>Valor Total: <%= number_to_currency(@security.value) %></p>
+<p>PU (Preço unitário) atual: <%= number_to_currency(@security.current_value/@security.quantity) %></p>
+<p>Valor atual: <%= number_to_currency(@security.current_value) %></p>

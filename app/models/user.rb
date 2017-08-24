@@ -22,8 +22,11 @@ class User < ApplicationRecord
   validates :document_number, presence: true, uniqueness: true, on: :update
 
   def my_bids_closed
-    self.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+    all = self.securities.map{|s| s.bids }.flatten.select{|b| b.status}
+    all << Bid.where(buyer: self, status: true).to_a
+    all.flatten!
   end
+
 
   def my_bids_all
     self.securities.map{|s| s.bids }.flatten

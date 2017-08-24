@@ -50,6 +50,7 @@ class SecuritiesController < ApplicationController
       @bid.price = params[:bid_calculation][:price]
     else
       @bid.rate = params[:bid_calculation][:rate]
+      @bid.indexer = params[:bid_calculation][:indexer]
     end
   end
 

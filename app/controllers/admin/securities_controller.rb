@@ -2,6 +2,7 @@ class Admin::SecuritiesController < ApplicationController
 before_action :set_security, only: [:edit, :update, :destroy, :show]
   def index
     @securities = Security.all.where(user: current_user)
+
   end
 
   def new
