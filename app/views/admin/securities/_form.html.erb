@@ -23,7 +23,7 @@
                 <%= f.input :quantity, label: 'Quantidade' %>
               </div>
               <div class="col-sm-8">
-                <%= f.input :unit_price, label: 'Preço unitário de compra (R$)', input_html: { data: { null_value: "R$ 0,00" } } %>
+                <%= f.input :unit_price, label: 'Preço unitário de compra (R$)', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
               </div>
             </div>
             <div class="row">
@@ -58,3 +58,10 @@
     </div>
   </div>
 </div>
+
+
+<% content_for :js do %>
+  <script type="text/javascript">
+    $("#real-money").maskMoney();
+   </script>
+<% end %>
