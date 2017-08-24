@@ -12,7 +12,7 @@ class SecuritiesController < ApplicationController
 
   def search
     @search = Search.new(search_params)
-    @securities = Security.all.order("created_at DESC")
+    @securities = Security.all.order("price ASC")
 
     if params[:search].present?
       @search.security_type_id = params[:search][:security_type_id]
@@ -23,19 +23,19 @@ class SecuritiesController < ApplicationController
     end
 
     if @search.security_type_id.present?
-      @securities = @securities.where(security_type_id: @search.security_type_id)
+      @securities = @securities.where(security_type_id: @search.security_type_id).reorder("price ASC")
     end
 
     if @search.maturity.present?
-      @securities = @securities.where("maturity <= ?", @search.maturity).reorder("maturity DESC")
+      @securities = @securities.where("maturity <= ?", Date.parse(@search.maturity)).reorder("maturity ASC")
     end
 
     if @search.price.present?
-      @securities = @securities.where("unit_price * quantity <= ?", @search.price).reorder("price DESC")
+      @securities = @securities.where("price <= ?", @search.price).reorder("price ASC")
     end
 
     if @search.issuer_id.present?
-      @securities = @securities.where(issuer_id: @search.issuer_id)
+      @securities = @securities.where(issuer_id: @search.issuer_id).reorder("price ASC")
     end
 
     if @search.rate.present?

@@ -6,5 +6,7 @@
 //= require jquery.inputmask.extensions
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
-
+//= jquery-maskmoney/Gruntfile.js
+//= jquery-maskmoney/dist/jquery.maskMoney.js
+//= jquery-maskmoney/src/jquery.maskMoney.js
 //= require_tree .
