@@ -76,14 +76,14 @@ abbr[title="required"] {
     $("#real-money").maskMoney();
     $('#taxa-money').maskMoney();
     $("#new_security").submit(function(ev) {
-        console.log("Oi")
         ev.preventDefault(); // to stop the form from submitting
         /* Validations go here */
+        var num = $("#real-money").maskMoney('unmasked')
+        var num1 = $("#taxa-money").maskMoney('unmasked')
         $("#real-money").attr("type", "number");
         $("#taxa-money").attr("type", "number");
-        $("#real-money").removeAttr("data-prefix");
-        $("#taxa-money").removeAttr("data-prefix");
-
+        $("#real-money").val(num[0]);
+        $("#taxa-money").val(num1[0]);
         this.submit(); // If all the validations succeeded
     });
    </script>
