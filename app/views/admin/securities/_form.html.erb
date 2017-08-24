@@ -75,5 +75,15 @@ abbr[title="required"] {
   <script type="text/javascript">
     $("#real-money").maskMoney();
     $('#taxa-money').maskMoney();
+    $("#new_security").submit(function(ev) {
+        console.log("Oi")
+        ev.preventDefault(); // to stop the form from submitting
+        /* Validations go here */
+        $("#real-money").maskMoney('unmasked');
+        $("#taxa-money").maskMoney('unmasked');
+        $("#real-money").attr("type", "number");
+        $("#taxa-money").attr("type", "number");
+        this.submit(); // If all the validations succeeded
+    });
    </script>
 <% end %>
