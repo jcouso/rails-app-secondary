@@ -43,19 +43,24 @@
 <br>
 
 <div class="container text-center">
-
-  <% if @securities.empty? %>
-    <h3> Nenhum título foi encontrado com esses critérios </h3>
-  <% elsif @search.empty? %>
-    <h3> Todos os títulos cadastrados </h3>
-  <% else %>
-    <h3> Resultados da sua busca </h3>
-  <% end %>
+  <div class ="row">
+    <% if @search.empty? %>
+      <h3> Todos os títulos cadastrados </h3>
+    <% elsif @securities.empty? %>
+      <h3> Nenhum título foi encontrado com esses critérios  </h3>
+    <% else %>
+      <%= "#{@securities.count} títulos encontrados" %>
+    <% end %>
+  </div>
   <% @securities.each do |security| %>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
       <%=render 'shared/security_card', security: security, link_path: admin_security_bids_path(security) %>
     </div>
   <% end %>
 </div>
+
+<br>
+<br>
+<br>
 
 <%= render 'shared/footer' %>

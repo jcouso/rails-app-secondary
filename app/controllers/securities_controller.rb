@@ -27,7 +27,7 @@ class SecuritiesController < ApplicationController
     end
 
     if @search.maturity.present?
-      @securities = @securities.where("maturity <= ?", @search.maturity).reorder("maturity ASC")
+      @securities = @securities.where("maturity <= ?", Date.parse(@search.maturity)).reorder("maturity ASC")
     end
 
     if @search.price.present?
