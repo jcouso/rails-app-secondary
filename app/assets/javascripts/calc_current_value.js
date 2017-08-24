@@ -28,6 +28,8 @@ function checkValuesPresence() {
   indexer = $("[name='security[indexer]']").val()
 
   if (issue_date && maturity && quantity && unit_price && rate && indexer) {
+    unit_price = $("[name='security[unit_price]']").maskMoney('unmasked')
+    rate = $("[name='security[rate]']").maskMoney('unmasked')
     $.ajax('/securities/ajax_calculate', {
       method: 'GET',
       type: 'json',
@@ -35,8 +37,8 @@ function checkValuesPresence() {
         issue_date: issue_date,
         maturity: maturity,
         quantity: quantity,
-        unit_price: unit_price,
-        rate: rate,
+        unit_price: unit_price[0],
+        rate: rate[0],
         indexer: indexer
       },
       success: function(data) {
