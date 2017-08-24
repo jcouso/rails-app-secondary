@@ -79,10 +79,11 @@ abbr[title="required"] {
         console.log("Oi")
         ev.preventDefault(); // to stop the form from submitting
         /* Validations go here */
-        $("#real-money").maskMoney('unmasked');
-        $("#taxa-money").maskMoney('unmasked');
         $("#real-money").attr("type", "number");
         $("#taxa-money").attr("type", "number");
+        $("#real-money").removeAttr("data-prefix");
+        $("#taxa-money").removeAttr("data-prefix");
+
         this.submit(); // If all the validations succeeded
     });
    </script>
