@@ -1,3 +1,14 @@
+<style>
+label {
+  font-size: 14px;
+
+}
+abbr[title="required"] {
+  display: none;
+}
+</style>
+
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -12,23 +23,23 @@
             <%= f.input :code, label: 'Código do título (ex: LCI 98E00059531)' %>
             <div class="row">
               <div class="col-sm-6">
-                <%= f.input :issue_date, as: :string, input_html: {class: "datepicker"}, label: 'Data de emissão' %>
+                <%= f.input :issue_date, as: :string, input_html: {class: "datepicker"}, label: 'Data de emissão', wrapper_html: { class: 'title' }%>
               </div>
               <div class="col-sm-6">
                 <%= f.input :maturity, as: :string, input_html: {class: "datepicker"}, label: 'Data de vencimento' %>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-4">
-                <%= f.input :quantity, label: 'Quantidade' %>
+            <div class="col-sm-9">
+                <%= f.input :unit_price, label: 'Preço unitário', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
               </div>
-              <div class="col-sm-8">
-                <%= f.input :unit_price, label: 'Preço unitário de compra (R$)' %>
+              <div class="col-sm-3">
+                <%= f.input :quantity, label: 'Quantidade' %>
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <%= f.input :rate, label: 'Taxa (%)' %>
+                <%= f.input :rate, label: 'Taxa (%)', input_html: { id: "taxa-money", data: {thousands: ".", decimal: ",", suffix:" %"} }, as: :string  %>
               </div>
               <div class="col-sm-6">
                 <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
@@ -61,3 +72,20 @@
   </div>
 </div>
 
+<% content_for :js do %>
+  <script type="text/javascript">
+    $("#real-money").maskMoney();
+    $('#taxa-money').maskMoney();
+    $("#new_security").submit(function(ev) {
+        console.log("Oi")
+        ev.preventDefault(); // to stop the form from submitting
+        /* Validations go here */
+        $("#real-money").attr("type", "number");
+        $("#taxa-money").attr("type", "number");
+        $("#real-money").removeAttr("data-prefix");
+        $("#taxa-money").removeAttr("data-prefix");
+
+        this.submit(); // If all the validations succeeded
+    });
+   </script>
+<% end %>

@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def calc_balance
-    balance = self.balance
+    balance = self.balance.to_f
     my_bids_closed.each do |bid|
       if self == bid.buyer
         operation = bid.price + bid.comission
@@ -44,6 +44,5 @@ class User < ApplicationRecord
     end
     balance
   end
-
 end
 

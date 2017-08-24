@@ -1,4 +1,5 @@
 <div class="security-card text-center" id= '<%=@security.issuer.name.downcase.gsub(" ", "-")%>'>
+  <%= simple_form_for [:admin, @security, @bid] do |f| %>
   <div class="security-type-logo">
     <%= @security.security_type.name %>
   </div>
@@ -10,16 +11,32 @@
     <table class="table table-striped" id="calculations">
       <tbody>
         <tr>
+          <td>teste:</td>
+          <td><%= number_to_percentage(rate_calc, precision:2) %></td>
+        </tr>
+        <tr>
           <td>Prazo até Vencimento:</td>
           <td><%= @security.time_to_maturity %> dias</td>
         </tr>
         <tr>
           <td>Rentabilidade Bruta:</td>
-          <td><%= number_to_percentage(gross_profitability, precision:2) %></td>
+          <td>
+          <% if !@calculation_price %>
+            <%= number_to_percentage(rate_calc, precision:2) %>
+          <% else %>
+            <%= number_to_percentage(gross_profitability, precision:2) %>
+          <% end %>
+          </td>
         </tr>
         <tr>
           <td>Rentabilidade Líquida:</td>
-          <td><%= number_to_percentage(net_profitability, precision:2) %></td>
+          <td>
+            <% if !@calculation_price %>
+              <%= number_to_percentage(net_rate_calc, precision:2) %>
+            <% else %>
+              <%= number_to_percentage(net_profitability, precision:2) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>CDI hoje:</td>
@@ -27,51 +44,51 @@
         </tr>
         <tr>
           <td>Rentabilidade Bruta (%CDI):</td>
-          <td><%= number_to_percentage(gross_profitability_cdi.to_f * 100, precision:2) %></td>
+          <td>
+            <% if !@calculation_price %>
+              <%= number_to_percentage(rate_calc.to_f*@security.cdi, precision:2) %>
+            <% else %>
+              <%= number_to_percentage(gross_profitability_cdi.to_f * 100, precision:2) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>Rentabilidade Líquida (%CDI):</td>
-          <td><%= number_to_percentage(net_profitability_cdi.to_f * 100, precision:2) %></td>
+          <td>
+            <% if !@calculation_price %>
+              <%= number_to_percentage(net_rate_calc.to_f*@security.cdi, precision:2) %>
+            <% else %>
+              <%= number_to_percentage(net_profitability_cdi.to_f * 100, precision:2) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>PU da oferta:</td>
           <td>
-            <% if @bid.price.nil? %>
-              <%= number_to_currency(price_calc.to_f / @security.quantity, precision:2) %>
-            <% else %>
               <%= number_to_currency(@bid.price.to_f / @security.quantity, precision:2) %>
-            <% end %>
           </td>
         </tr>
         <tr>
           <td>Valor da oferta:</td>
           <td>
-            <%= number_to_currency(price_calc.to_f, precision:2) %>
+              <%= number_to_currency(@bid.price, precision:2) %>
           </td>
         </tr>
         <tr>
-          <td>IPCA:</td>
-          <td><%= number_to_percentage(@security.ipca, precision:2) %></td>
-        </tr>
-        <tr>
-          <td>IGPM:</td>
-          <td><%= number_to_percentage(@security.igpm, precision:2) %></td>
-        </tr>
-        <tr>
-          <td>i:</td>
-          <td><%= number_to_percentage(((1+@security.rate)**(1.to_f/360)-1)*100, precision:4) %></td>
-        </tr>
-        <tr>
-          <td>Comissão:</td>
-          <td><%#= number_to_percentage(((1+@bid.rate)**(1.to_f/360)-1)*100, precision:4) %></td>
+          <td>Taxa Secondary:</td>
+          <td><%= number_to_currency(@bid.comission, precision:2) %></td>
         </tr>
         <tr>
           <td>Valor final (oferta + comissão):</td>
-          <td><%#= @bid.comission %></td>
+          <td><%= number_to_currency(@bid.comission + @bid.price) %></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <button class="btn btn-navy-blue">Enviar ordem</button>
-  <%#= link_to "ver mais", link_path, class: "card-link" %>
+  <!-- <button class="btn btn-navy-blue">Enviar ordem</button> -->
+        <%= f.input :price, as: :hidden %>
+        <%= f.input :rate, as: :hidden %>
+        <%= f.input :indexer, as: :hidden %>
+  <%= submit_tag 'Enviard ordem', class: 'btn btn-navy-blue' %>
+  <% end %>
 </div>

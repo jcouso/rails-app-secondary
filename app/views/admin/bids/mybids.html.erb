@@ -1,5 +1,26 @@
+<style>
+.title-minha-ofertas h2 {
+  margin: 10px;
+}
+
+</style>
+
 <div class="container">
-  <h2>Minhas ofertas enviadas</h2>
+
+  <div class="title-minha-ofertas">
+    <h2>Minhas ofertas enviadas</h2>
+      <% if @securities.empty? %>
+        <h3> Você não fez nenhuma oferta ainda </h1>
+        <%= link_to "Veja os títulos disponíveis", search_securities_path %>
+      <% else %>
+        <% @securities.each do |security| %>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <%=render 'shared/security_card', security: security, link_path:  admin_security_bids_path(security) %>
+          </div>
+      <% end %>
+      <% end %>
+  </div>
+
   <% if @securities.empty? %>
     <h3> Você não fez nenhuma oferta ainda </h1>
     <%= link_to "Veja os títulos disponíveis", search_securities_path %>
@@ -9,6 +30,7 @@
           <%=render 'shared/security_card', security: security, link_path:  admin_security_bids_path(security) %>
       </div>
     <% end %>
+
   <% end %>
-  </div>
 </div>
+
