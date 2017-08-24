@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170824151146) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +96,8 @@ ActiveRecord::Schema.define(version: 20170824151146) do
     t.string   "account_agency"
     t.string   "account_number"
     t.date     "expedition_date"
-    t.float    "balance",                default: 0.0,   null: false
+    t.float    "balance",                default: 0.0, null: false
+    t.string   "document_type"
     t.boolean  "admin",                  default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

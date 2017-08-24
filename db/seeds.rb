@@ -83,12 +83,7 @@ Security.all.each do |security|
                seller: security.user,
                security: security,
                status: false,
-<<<<<<< HEAD
-               price: security.quantity*security.unit_price*rand(0.80..1.20)
-               )
-=======
                price: security.quantity*security.unit_price*rand(0.80..1.20),
                indexer: INDEXERS.sample)
->>>>>>> f22c3824bcb47e059ffec259f4c7f47b8d01f886
   end
 end
