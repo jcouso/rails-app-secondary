@@ -26,6 +26,8 @@ gem 'rails-i18n', '5.0.3'
 gem 'jquery-inputmask-rails'
 gem 'animate-rails'
 gem 'carrierwave', '~> 0.11.2'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
 
 group :development, :test do
   gem 'pry-byebug'
