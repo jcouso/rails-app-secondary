@@ -27,7 +27,7 @@
               <% rate = number_to_percentage(((best_offer.price-@security.value)/@security.value)*100, precision: 2) %>
               <h3><%= number_to_currency(best_offer.price)%> </h3>
 
-              <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+              <p>Lance oferecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
               <p >Taxa sobre valor atual: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
               <% if best_offer.buyer != current_user && @security.user != current_user%>
                 <p><strong> Seu lance não é o maior, faça um lance maior para ganher este arremate! </strong></p>
@@ -46,11 +46,11 @@
         <% bids.to_a.each do |bid| %>
           <div class="offer">
             <div class="offer-info">
-              <p><%= number_to_currency(bid.price)%> - Lance ofrecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre valor atual: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
+              <p><%= number_to_currency(bid.price)%> - Lance oferecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre valor atual: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
               <% if bid.buyer == current_user %>
                   <h5>Faça um lance maior para ganhar este leilão</h5>
               <% end %>
-            
+
             </div>
           </div>
         <% end %>

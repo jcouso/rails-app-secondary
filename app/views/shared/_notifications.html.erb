@@ -1,15 +1,23 @@
-<% bids.sort_by{|t| - t.created_at.to_i}.first(10).each do |bid| %>
-  <% if current_user == bid.buyer %>
-    <li>
-      <%= link_to "#" do %>
-        <i class="fa fa-envelope"></i> <%= t(".profile", default: "Você tem uma oferta aceita") %>
-      <% end %>
-    </li>
+<% if current_user.selling_bids.count.zero? %>
+  <li>
+    <%= link_to "#" do %>
+      <i class="fa fa-envelope"></i> <%= t(".profile", default: "Você não possui novas mensagens") %>
+    <% end %>
+  </li>
+<% else %>
+  <% bids.sort_by{|t| - t.created_at.to_i}.first(10).each do |bid| %>
+    <% if current_user == bid.buyer %>
+      <li>
+        <%= link_to "#" do %>
+          <i class="fa fa-envelope"></i> <%= t(".profile", default: "Você tem uma oferta aceita") %>
+        <% end %>
+      </li>
     <% else %>
-    <li>
-      <%= link_to admin_security_bids_path(bid.security) do %>
-        <i class="fa fa-envelope"></i> Você recebeu uma oferta de compra <%= bid.security.issuer.name %> #<%= bid.security.code %>
-      <% end %>
-    </li>
+      <li>
+        <%= link_to admin_security_bids_path(bid.security) do %>
+          <i class="fa fa-envelope"></i> Você recebeu uma oferta de compra <%= bid.security.issuer.name %> #<%= bid.security.code %>
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
 <% end %>
