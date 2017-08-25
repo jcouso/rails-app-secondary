@@ -1,33 +1,41 @@
 <br>
-<%= link_to "voltar", :back, class: "links" %>
+<%= link_to "Voltar para busca", search_securities_path, class: "links" %>
 <div class="row">
   <div class="col-md-9">
     <% if @bids.empty? %>
-      <h1> Seja o primeiro a fazer um lance </h1>
+      <% if current_user == @security.user %>
+        <h1 style="font-size:32px;">Você ainda não possui ofertas para este título.</h1>
+      <% else %>
+        <h1 style="font-size:32px;">Seja o primeiro a dar um lance!</h1>
+        <%= link_to "Ir para a página do título", security_path(@security), class: "btn btn-navy-blue" %>
+        <br>
+        <br>
+      <% end %>
     <% else %>
       <% if !@security.status.nil? %>
         <div class="bid-title">
-          <h3>Titulo Vendido</h2>
+          <h3 style="font-size:32px;">Título Vendido!</h3>
             <div class="offer" id="best">
               <i class="fa fa-star" aria-hidden="true"></i>
               <ul>
-                <li>Lance Ganhador: <%= number_to_currency(@bid.first.price) %></li>
+                <li>Lance Vencedor: <%= number_to_currency(@bid.first.price) %></li>
               </ul>
             </div>
         </div>
       <% else %>
+        <h1 style="font-size:32px;">Lances recebidos:</h1>
         <h1 class="bid-title"> </h1>
         <% bids = @bids.to_a %>
         <% best_offer = bids.shift %>
 
         <div class="offer" id="best">
           <i class="fa fa-star" aria-hidden="true"></i>
-              <div class="offer-info">
+            <div class="offer-info">
 
-              <% rate = number_to_percentage(((best_offer.price-@security.value)/@security.value)*100, precision: 2) %>
+              <% rate = number_to_percentage(((best_offer.price-@security.current_value)/@security.current_value)*100, precision: 2) %>
               <h3><%= number_to_currency(best_offer.price)%> </h3>
 
-              <p>Lance ofrecido no <%= best_offer.created_at.strftime("%d/%m/%Y %H:%M:%S") %></p>
+              <p>Lance registrado em <%= best_offer.created_at.strftime("%d/%m/%Y") %></p>
               <p >Taxa sobre valor atual: <span style="color:<%= rate.to_f < 0 ? "red" : "green" %>;"><%= rate %> </span></p>
               <% if best_offer.buyer != current_user && @security.user != current_user%>
                 <p><strong> Seu lance não é o maior, faça um lance maior para ganher este arremate! </strong></p>
@@ -46,16 +54,17 @@
         <% bids.to_a.each do |bid| %>
           <div class="offer">
             <div class="offer-info">
-              <p><%= number_to_currency(bid.price)%> - Lance ofrecido no <%= bid.created_at.strftime("%d/%m/%Y %H:%M:%S") %> - Taxa sobre valor atual: <%= number_to_percentage(((bid.price-@security.value)/@security.value)*100, precision: 2) %> </p>
+              <p><%= number_to_currency(bid.price)%> - Lance registrado em <%= bid.created_at.strftime("%d/%m/%Y") %> - Taxa sobre valor atual: <%= number_to_percentage(((bid.price-@security.current_value)/@security.value)*100, precision: 2) %> </p>
               <% if bid.buyer == current_user %>
                   <h5>Faça um lance maior para ganhar este leilão</h5>
               <% end %>
-            
+
             </div>
           </div>
         <% end %>
       <% end %>
     <% end %>
+  <%= link_to "Voltar para meus títulos", admin_securities_path, class: "links" %>
   </div>
   <div class="col-md-3">
     <%=render 'shared/security_card', security: @security, link_path: security_path(@security) %>

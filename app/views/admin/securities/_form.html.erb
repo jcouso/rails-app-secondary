@@ -31,7 +31,7 @@ abbr[title="required"] {
             </div>
             <div class="row">
             <div class="col-sm-9">
-                <%= f.input :unit_price, label: 'Preço unitário', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
+                <%= f.input :unit_price, label: 'Preço unitário (R$)', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
               </div>
               <div class="col-sm-3">
                 <%= f.input :quantity, label: 'Quantidade' %>
@@ -52,7 +52,7 @@ abbr[title="required"] {
                 <input class="form-control numeric decimal required readonly" readonly="readonly" type="number" step="any" name="security[current_value]" id="security_current_value" value="0">
               </div>
               <div class="col-sm-6">
-                <%= f.input :price, label: 'Preço de venda (R$)' %>
+                <%= f.input :price, label: 'Preço mínimo de venda (R$)' %>
               </div>
             </div>
             <div class="form-input form-group-sm">
