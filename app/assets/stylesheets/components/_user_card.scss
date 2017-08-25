@@ -1,14 +1,10 @@
-.main-conteiner {
-  display: flex;
-}
-
-
 .user-card {
   background-color: white;
   margin-top:10px;
   box-shadow: 5px 5px 10px #cccccc;
   border-radius: 3px;
   padding: 15px;
+  width: 100%;
 
 
   p {
@@ -19,6 +15,11 @@
       }
 
   }
+
+}
+
+.smaller-btn {
+  font-size:12px;
 
 }
 

@@ -5,5 +5,5 @@
   <p><strong>Ofertas atuais:</strong> <%= user.bids.count %></p>
   <p><strong>Títulos cadastrados:</strong> <%= user.securities.count %></p>
   <p><strong>Saldo em conta:</strong> <%= number_to_currency(user.calc_balance, :unit => "R$ ", :separator => ",", :delimiter => ".") %></p>
-  <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-navy-blue btn-sm" %>
+  <%= link_to "Cadastre um novo título", new_admin_security_path, class: "btn btn-navy-blue btn-sm smaller-btn" %>
 </div>
