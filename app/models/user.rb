@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bids, foreign_key: :buyer_id
+  has_many :selling_bids, foreign_key: :seller_id, class_name: "Bid"
   has_many :securities
 
   validates :name, length: { minimum: 2 }, on: :update
