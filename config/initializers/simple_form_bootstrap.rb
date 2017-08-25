@@ -151,4 +151,18 @@ SimpleForm.setup do |config|
     date: :multi_select,
     time: :multi_select
   }
+
+  config.wrappers :bootstrap, tag: 'div', class: 'control-group', error_class: 'error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.use :tooltip # enable the tooltip example from below.
+    b.wrapper tag: 'div', class: 'controls' do |ba|
+      ba.use :icon # enable the icon example from below
+      ba.use :input
+      ba.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    end
+  end
+
 end

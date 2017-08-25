@@ -1,14 +1,3 @@
-<style>
-label {
-  font-size: 14px;
-
-}
-abbr[title="required"] {
-  display: none;
-}
-</style>
-
-
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -18,7 +7,7 @@ abbr[title="required"] {
         <%= simple_form_for([:admin, @security]) do |f| %>
 
           <div class="form-input form-group-sm">
-            <%= f.association :security_type, label: 'Tipo de título' %>
+            <%= f.association :security_type, label: 'Tipo de título'%>
             <%= f.association :issuer, label: 'Emissor' %>
             <%= f.input :code, label: 'Código do título (ex: LCI 98E00059531)' %>
             <div class="row">
@@ -31,7 +20,7 @@ abbr[title="required"] {
             </div>
             <div class="row">
             <div class="col-sm-9">
-                <%= f.input :unit_price, label: 'Preço unitário (R$)', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
+              <%= f.input :unit_price, label: 'Preço unitário', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ ", toggle:"tooltip", placement:"left"}, title: "Preço unitario de compra registrado na nota de negociação." }, as: :string %>
               </div>
               <div class="col-sm-3">
                 <%= f.input :quantity, label: 'Quantidade' %>
@@ -49,14 +38,23 @@ abbr[title="required"] {
             <div class="row">
               <div class="col-sm-6" id="current-value">
                 <label for="security_current_value">Valor atual</label>
-                <input class="form-control numeric decimal required readonly" readonly="readonly" type="number" step="any" name="security[current_value]" id="security_current_value" value="0">
+                <input class="form-control numeric decimal required readonly" readonly="readonly" type="text" name="security[current_value]" id="security_current_value" value="R$ 0.00" step="0.01" data-toggle="tooltip" data-placement="left" title="Preço atual de seu titulo.">
               </div>
               <div class="col-sm-6">
+<<<<<<< HEAD
                 <%= f.input :price, label: 'Preço mínimo de venda (R$)' %>
+=======
+                <%= f.input :price, label: 'Preço de venda (R$)', input_html: { id: "real-venda-money", data: {thousands: ".", decimal: ",", prefix:"R$ ", toggle:"tooltip", placement:"right"}, title: "Preço mínimo para venda."}, as: :string%>
+>>>>>>> 6280f04db6b31bd52798cbea49890afe6cefe66e
               </div>
             </div>
-            <div class="form-input form-group-sm">
-              <%= f.input :file, label: 'Anexar Nota de negociação' %>
+            <div class="form-input form-group-sm col-xs-8 btn-choose">
+                <label class="btn btn-success btn-xs">
+                  <span class="title">Anexar Nota de negociação</span>
+                  <span style="display:none;">
+                  <%= f.input :file %>
+                  </span>
+                </label>
               <%= f.input :file_cache, as: :hidden %>
             </div>
           </div>
@@ -76,15 +74,23 @@ abbr[title="required"] {
   <script type="text/javascript">
     $("#real-money").maskMoney();
     $('#taxa-money').maskMoney();
+    $('#real-venda-money').maskMoney();
+    $('#real-minimo-money').maskMoney();
     $("#new_security").submit(function(ev) {
         ev.preventDefault(); // to stop the form from submitting
         /* Validations go here */
         var num = $("#real-money").maskMoney('unmasked')
         var num1 = $("#taxa-money").maskMoney('unmasked')
+        var num2 = $("#real-venda-money").maskMoney('unmasked')
+        var num3 = $("#real-minimo-money").maskMoney('unmasked')
         $("#real-money").attr("type", "number");
         $("#taxa-money").attr("type", "number");
+        $("#real-venda-money").attr("type", "number");
+        $("#real-minimo-money").attr("type", "number");
         $("#real-money").val(num[0]);
         $("#taxa-money").val(num1[0]);
+        $("#real-venda-money").val(num2[0]);
+        $("#real-minimo-money").val(num3[0]);
         this.submit(); // If all the validations succeeded
     });
    </script>

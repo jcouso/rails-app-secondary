@@ -21,3 +21,25 @@
     font-weight: bold;
   }
 }
+
+label {
+  font-size: 14px;
+
+}
+abbr[title="required"] {
+  display: none;
+
+}
+
+.btn-choose{
+  margin-bottom: 20px;
+  margin-left: -15px;
+}
+
+.tooltip {
+  font-size:10px !important;
+}
+
+.tooltip-inner {
+  width: 80px !important;
+}
