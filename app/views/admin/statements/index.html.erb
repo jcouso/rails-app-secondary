@@ -1,10 +1,12 @@
-<h2>Extrato de <%= current_user.name %></h2>
-<p>Posição em <%= Time.now.strftime("%d/%m/%Y") %> às <%= Time.now.strftime("%H:%M:%S") %></p>
 <div class="row">
   <div class="col-md-3">
     <%= render "shared/user_card", user: current_user %>
   </div>
-  <div class="col-md-9 statement-card" align="center">
+  <div class="col-md-9">
+    <h2>Extrato de <%= current_user.name %></h2>
+    <p>Posição em <%= Time.now.strftime("%d/%m/%Y") %> às <%= Time.now.strftime("%H:%M:%S") %></p>
+
+  <div class="statement-card" align="center">
     <table class="table table-sm table-responsive">
       <thead>
         <tr>
@@ -24,7 +26,7 @@
             <tr class="active">
               <td><%= bid.security.updated_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
               <td>Comissão de Operação <%= bid.security.issuer.name %> #<%= bid.security.code %> - Operação #<%= bid.id %></td>
-              <td>- (<%= number_to_currency(bid.comission, :unit => "R$ ", :separator => ",", :delimiter => ".") %>)</td>
+              <td>- oi(<%= number_to_currency(bid.comission, :unit => "R$ ", :separator => ",", :delimiter => ".") %>)</td>
             </tr>
           <% else %>
             <tr class="success">
@@ -37,5 +39,6 @@
       </tbody>
     </table>
     <p class="balance-exibition">O saldo em <%= Time.now.strftime("%d/%m/%Y") %> às <%= Time.now.strftime("%H:%M:%S") %> é de <%= number_to_currency(current_user.calc_balance, :unit => "R$ ", :separator => ",", :delimiter => ".") %> </p>
+  </div>
   </div>
 </div>
