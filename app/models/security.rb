@@ -95,13 +95,13 @@ class Security < ApplicationRecord
   end
 
   def validate_date_limit_before_maturity
-    if date_limit > maturity
+    if date_limit.present? && maturity.present? && date_limit > maturity
       errors.add(:date_limit, "Título não pode ser aberto para negociação após data de vencimento")
     end
   end
 
   def maturity_cannot_be_before_issue_date
-    if maturity < issue_date
+    if maturity.present? && issue_date.present? && maturity < issue_date
       errors.add(:maturity, "A data de vencimento tem que ser depois da data de emissão")
     end
   end
