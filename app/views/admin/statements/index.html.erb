@@ -26,7 +26,7 @@
             <tr class="active">
               <td><%= bid.security.updated_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
               <td>Comissão de Operação <%= bid.security.issuer.name %> #<%= bid.security.code %> - Operação #<%= bid.id %></td>
-              <td>- (<%= number_to_currency(bid.comission, :unit => "R$ ", :separator => ",", :delimiter => ".") %>)</td>
+              <td>- oi(<%= number_to_currency(bid.comission, :unit => "R$ ", :separator => ",", :delimiter => ".") %>)</td>
             </tr>
           <% else %>
             <tr class="success">
