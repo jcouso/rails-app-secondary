@@ -8,11 +8,13 @@
       <div class="row">
         <div class="col-md-7">
           <%= render 'shared/product_info' %>
+          <div id="controls">
           <% if current_user == @security.user %>
             <%= link_to "Editar", edit_admin_security_path, class: "btn btn-primary" %>
             <%= link_to "Deletar", admin_securities_path, method: :delete, data: { confirm: 'Deseja remover este título?' }, class: "btn btn-danger" %>
           <% else %>
           <% end %>
+          </div>
         </div>
       <div class="col-md-4">
         <% if current_user != @security.user %>
@@ -36,6 +38,26 @@
             <%= image_tag @security.issuer.name.downcase+"-logo.png", height: "40" , id: "logo" %>
             <p><strong>Sua oferta (calcule antes)</strong></p>
           </div>
+          <table class="table table-striped" id="calculations">
+            <tbody>
+              <tr>
+                <td>CDI hoje:</td>
+                <td><%= number_to_percentage(@security.cdi, precision:2) %></td>
+              </tr>
+              <tr>
+                <td>CDI ult. 12 meses:</td>
+                <td><%= number_to_percentage(@security.cdi_12m, precision:2) %></td>
+              </tr>
+              <tr>
+                <td>IPCA ult. 12 meses:</td>
+                <td><%= number_to_percentage(@security.ipca, precision:2) %></td>
+              </tr>
+              <tr>
+                <td>IGMP ult. 12 meses:</td>
+                <td><%= number_to_percentage(@security.igpm, precision:2) %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       <% else %>
         <%#= render 'shared/user_card' %>

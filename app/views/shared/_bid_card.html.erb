@@ -4,11 +4,11 @@
     <div class="form-inputs">
       <%= f.input :mode, as: :radio_buttons, label: "Faça sua oferta", collection: [:price, :rate], checked: :price %>
       <div class="price-mode">
-        <%= f.input :price, as: :float, label: 'Valor de oferta', autofocus: true, input_html: { min: @security.price.round(2), value: @security.price.round(2), autofocus: true } %>
+        <%= f.input :price, label: 'Valor de oferta (R$)', autofocus: true, input_html: { min: @security.price.round(2), value: @security.price.round(2), autofocus: true, id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
       </div>
       <div class="row">
         <div class="col-sm-6 rate-mode hidden">
-        <%= f.input :rate, label: 'Taxa de oferta', autofocus: true %>
+        <%= f.input :rate, label: 'Taxa oferta (%)', input_html: { id: "taxa-money", data: {thousands: ".", decimal: ",", suffix:" %"} }, as: :string, autofocus: true %>
         </div>
         <div class="col-sm-6 indexer-mode hidden">
         <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
@@ -21,3 +21,21 @@
     </div>
   <% end %>
 </div>
+
+<% content_for :js do %>
+  <script type="text/javascript">
+    $("#real-money").maskMoney();
+    $('#taxa-money').maskMoney();
+    $("#new_security").submit(function(ev) {
+        ev.preventDefault(); // to stop the form from submitting
+        /* Validations go here */
+        var num = $("#real-money").maskMoney('unmasked')
+        var num1 = $("#taxa-money").maskMoney('unmasked')
+        $("#real-money").attr("type", "number");
+        $("#taxa-money").attr("type", "number");
+        $("#real-money").val(num[0]);
+        $("#taxa-money").val(num1[0]);
+        this.submit(); // If all the validations succeeded
+    });
+   </script>
+<% end %>

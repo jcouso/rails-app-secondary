@@ -10,10 +10,10 @@
     </div>
     <table class="table table-striped" id="calculations">
       <tbody>
-        <tr>
+        <!-- <tr>
           <td>teste:</td>
-          <td><%= number_to_percentage(rate_calc, precision:2) %></td>
-        </tr>
+          <td><%#= number_to_percentage(rate_calc, precision:2) %></td>
+        </tr> -->
         <tr>
           <td>Prazo até Vencimento:</td>
           <td><%= @security.time_to_maturity %> dias</td>
@@ -39,14 +39,10 @@
           </td>
         </tr>
         <tr>
-          <td>CDI hoje:</td>
-          <td><%= number_to_percentage(@security.cdi, precision:2) %></td>
-        </tr>
-        <tr>
           <td>Rentabilidade Bruta (%CDI):</td>
           <td>
             <% if !@calculation_price %>
-              <%= number_to_percentage(rate_calc.to_f*@security.cdi, precision:2) %>
+              <%= number_to_percentage((rate_calc.to_f/@security.cdi)*100, precision:2) %>
             <% else %>
               <%= number_to_percentage(gross_profitability_cdi.to_f * 100, precision:2) %>
             <% end %>
@@ -56,7 +52,7 @@
           <td>Rentabilidade Líquida (%CDI):</td>
           <td>
             <% if !@calculation_price %>
-              <%= number_to_percentage(net_rate_calc.to_f*@security.cdi, precision:2) %>
+              <%= number_to_percentage((net_rate_calc.to_f/@security.cdi)*100, precision:2) %>
             <% else %>
               <%= number_to_percentage(net_profitability_cdi.to_f * 100, precision:2) %>
             <% end %>

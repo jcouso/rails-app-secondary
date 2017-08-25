@@ -20,7 +20,7 @@
             </div>
             <div class="row">
             <div class="col-sm-9">
-                <%= f.input :unit_price, label: 'Preço unitário', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ ", toggle:"tooltip", placement:"left"}, title: "Preço unitario de compra registrado na nota de negociação." }, as: :string %>
+              <%= f.input :unit_price, label: 'Preço unitário', input_html: { id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ ", toggle:"tooltip", placement:"left"}, title: "Preço unitario de compra registrado na nota de negociação." }, as: :string %>
               </div>
               <div class="col-sm-3">
                 <%= f.input :quantity, label: 'Quantidade' %>
