@@ -4,11 +4,13 @@
     <div class="form-inputs">
       <%= f.input :mode, as: :radio_buttons, label: "Faça sua oferta", collection: [:price, :rate], checked: :price %>
       <div class="price-mode">
-        <%= f.input :price, label: 'Valor de oferta (R$)', autofocus: true, input_html: { min: @security.price.round(2), value: @security.price.round(2), autofocus: true, id: "real-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
+        <%= f.input :masked_price, label: 'Valor de oferta (R$)', autofocus: true, input_html: { min: @security.price.to_f/10, value: @security.price.to_f/10, autofocus: true, id: "masked-money", data: {thousands: ".", decimal: ",", prefix:"R$ "} }, as: :string %>
+        <%= f.input :price, as: :hidden, input_html: {id: "real-money"} %>
       </div>
       <div class="row">
         <div class="col-sm-6 rate-mode hidden">
-        <%= f.input :rate, label: 'Taxa oferta (%)', input_html: { id: "taxa-money", data: {thousands: ".", decimal: ",", suffix:" %"} }, as: :string, autofocus: true %>
+        <%= f.input :masked_rate, label: 'Taxa oferta (%)', input_html: { id: "masked_taxa-money", data: {thousands: ".", decimal: ",", suffix:" %"} }, as: :string, autofocus: true %>
+        <%= f.input :rate, as: :hidden, input_html: {id: "taxa-money"} %>
         </div>
         <div class="col-sm-6 indexer-mode hidden">
         <%= f.input :indexer, collection: ["CDI", "PRE", "IPC-A+", "IGP-M+"], label: 'Indexador' %>
@@ -24,15 +26,26 @@
 
 <% content_for :js do %>
   <script type="text/javascript">
-    $("#real-money").maskMoney();
-    $('#taxa-money').maskMoney();
+    $("#masked-money").maskMoney();
+    $('#masked_taxa-money').maskMoney();
+    $("form.bid_calculation .btn").on('click', function(ev) {
+        ev.preventDefault(); // to stop the form from submitting
+        /* Validations go here */
+        var num = $("#masked-money").maskMoney('unmasked')
+        var num1 = $("#masked_taxa-money").maskMoney('unmasked')
+/*        $("#real-money").attr("type", "number");*/
+/*        $("#taxa-money").attr("type", "number");*/
+        $("#real-money").val(num[0]);
+        $("#taxa-money").val(num1[0]);
+        $(this).closest("form").trigger('submit.rails');
+    });
     $("#new_security").submit(function(ev) {
         ev.preventDefault(); // to stop the form from submitting
         /* Validations go here */
-        var num = $("#real-money").maskMoney('unmasked')
-        var num1 = $("#taxa-money").maskMoney('unmasked')
-        $("#real-money").attr("type", "number");
-        $("#taxa-money").attr("type", "number");
+        var num = $("#masked-money").maskMoney('unmasked')
+        var num1 = $("#masked_taxa-money").maskMoney('unmasked')
+/*        $("#real-money").attr("type", "number");*/
+/*        $("#taxa-money").attr("type", "number");*/
         $("#real-money").val(num[0]);
         $("#taxa-money").val(num1[0]);
         this.submit(); // If all the validations succeeded
