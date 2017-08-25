@@ -1,3 +1,10 @@
+<style type="text/css">
+  .title-sold {
+    font-size: 12px;
+    color:red !important;
+  }
+</style>
+
 <div class="security-card text-center" id= '<%=security.issuer.name.downcase.gsub(" ", "-")%>'>
   <div class="security-type-logo">
     <%= security.security_type.name %>
@@ -5,6 +12,9 @@
   <div class="description">
     <div class="security-card-header">
       <%= image_tag security.issuer.name.downcase+"-logo.png", height: "40" , id: "logo" %>
+      <% if !security.status.nil? %>
+        <p class="title-sold">Vendido</p>
+      <% end %>
       <p><strong><%= security.security_type.name %> - <%= security.issuer.name %></strong></p>
     </div>
     <table class="table table-striped">
@@ -50,5 +60,6 @@
       </tbody>
     </table>
   </div>
+
   <%= link_to "Ver mais", link_path, class: "card-link" %>
 </div>
