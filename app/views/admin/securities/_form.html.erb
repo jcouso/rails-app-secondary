@@ -41,11 +41,7 @@
                 <input class="form-control numeric decimal required readonly" readonly="readonly" type="text" name="security[current_value]" id="security_current_value" value="R$ 0.00" step="0.01" data-toggle="tooltip" data-placement="left" title="Preço atual de seu titulo.">
               </div>
               <div class="col-sm-6">
-<<<<<<< HEAD
-                <%= f.input :price, label: 'Preço mínimo de venda (R$)' %>
-=======
                 <%= f.input :price, label: 'Preço de venda (R$)', input_html: { id: "real-venda-money", data: {thousands: ".", decimal: ",", prefix:"R$ ", toggle:"tooltip", placement:"right"}, title: "Preço mínimo para venda."}, as: :string%>
->>>>>>> 6280f04db6b31bd52798cbea49890afe6cefe66e
               </div>
             </div>
             <div class="form-input form-group-sm col-xs-8 btn-choose">
