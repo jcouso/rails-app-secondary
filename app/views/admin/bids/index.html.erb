@@ -1,3 +1,11 @@
+<style >
+.congratulations p{
+  font-size: 25px;
+  font-weight: 300;
+}
+
+</style>
+
 <br>
 <%= link_to "Voltar para busca", search_securities_path, class: "links" %>
 <div class="row">
@@ -17,9 +25,10 @@
           <h3 style="font-size:32px;">Título Vendido!</h3>
             <div class="offer" id="best">
               <i class="fa fa-star" aria-hidden="true"></i>
-              <ul>
-                <li>Lance Vencedor: <%= number_to_currency(@bid.first.price) %></li>
-              </ul>
+              <div class="congratulations">
+                <p>Parabéns! Você vendeu seu título</p>
+                <p>Lance Vencedor: <strong><%= number_to_currency(@bid.first.price) %></strong> </p>
+              </div>
             </div>
         </div>
       <% else %>
