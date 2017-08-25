@@ -12,7 +12,7 @@ class SecuritiesController < ApplicationController
 
   def search
     @search = Search.new(search_params)
-    @securities = Security.all.order("price ASC")
+    @securities = Security.all.order("price ASC").where(status: nil)
 
     if params[:search].present?
       @search.security_type_id = params[:search][:security_type_id]
