@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20170824151146) do
     t.string   "account_agency"
     t.string   "account_number"
     t.date     "expedition_date"
-    t.float    "balance"
+    t.float    "balance",                default: 0.0,   null: false
     t.string   "document_type"
     t.boolean  "admin",                  default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
